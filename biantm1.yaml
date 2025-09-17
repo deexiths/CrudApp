@@ -1,0 +1,156 @@
+openapi: 3.0.1
+info:
+  title: BIAN-Thought Machine
+  description: APIs for managing transfer by integrating BIAN service domains core banking endpoints.
+  version: 11.0.0
+servers:
+  - url: 'https://api-dev.fincuro.com'
+paths:
+  /fundTransfer/initiate:
+    post:
+      tags:
+        - Fund Transfer
+      summary: InBQ Initiate transfer transaction
+      description: InBQ Initiate transfer transaction
+      operationId: InitiateFundTransfer
+      security:
+        - keycloakAuth: [ ]   # 🔑 Require Keycloak auth
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateTransferRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InitiateDepositsandWithdrawalsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  securitySchemes:
+    keycloakAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.fincuro.in/realms/ai-gen/protocol/openid-connect/token
+          scopes: {}   # Can add scopes if needed
+
+  schemas:
+    InitiateTransferRequest:
+      type: object
+      properties:
+        occurrenceFromAccountId:
+          type: string
+          description: Unique identifier of the source account
+          example: "2eff6fa2-44e6-46a3-b94d-831824016f58"
+        occurrenceToAccountId:
+          type: string
+          description: Unique identifier of the target account
+          example: "f6fa2-44e6-46a3-b94d-831824016f"
+        transactionAmount:
+          $ref: '#/components/schemas/transactionAmount'
+        transactionType:
+          type: string
+          description: Type of transaction
+          example: "Fund Transfer"
+        transactionDescription:
+          type: string
+          description: Description of the transaction
+          example: "string"
+        accountLimitBreachResponse:
+          type: string
+          description: Action if account limit is breached
+          example: "Override"
+
+    transactionAmount:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Transaction value
+          example: "100"
+        currencyCode:
+          type: string
+          description: ISO Currency Code
+          example: "USD"
+
+    InitiateDepositsandWithdrawalsResponse:
+      type: object
+      properties:
+        transactionReference:
+          type: string
+          description: Unique transaction reference
+          example: "TRX-23923923923"
+
+    HTTPError:
+      type: object
+      properties:
+        status_code:
+          type: string
+          example: "400"
+        status:
+          type: string
+          example: "Bad Request"
+        message:
+          type: string
+          example: "Invalid request parameters"
+
+  requestBodies:
+    InitiateTransferRequest:
+      description: Request body to initiate a fund transfer
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateTransferRequest'
+
+  responses:
+    InitiateDepositsandWithdrawalsResponse:
+      description: Fund Transfer successful response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateDepositsandWithdrawalsResponse'
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    TooManyRequests:
+      description: TooManyRequests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HTTPError'

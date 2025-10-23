@@ -1,4 +1,4 @@
-CREATE DATABASE 'prd_directory_db';
+REATE DATABASE IF NOT EXISTS 'prd_directory_db';
 USE `prd_directory_db`;
 
 CREATE TYPE `directory_date_type_enum` AS ENUM (
@@ -109,20 +109,21 @@ CREATE TYPE `document_status_enum` AS ENUM (
 -- Reference table for identification types
 DROP TABLE IF EXISTS `identification_type`;
 CREATE TABLE `identification_type` (
-    `identification_type_id` SERIAL PRIMARY KEY,
+    `identification_type_id` SERIAL,
     `type_code` VARCHAR(50) UNIQUE NOT NULL,
     `type_name` VARCHAR(100) NOT NULL,
     `description` TEXT,
     `country_scope` VARCHAR(3),          -- NULL for global, or specific country code
     `is_active` BOOLEAN DEFAULT true,
     `validation_regex` VARCHAR(200),     -- Optional: regex pattern for validation
-    `created_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+    `created_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`identification_type_id`)
 );
 
 
 DROP TABLE IF EXISTS `party`;
 CREATE TABLE `party` (
-    `party_id` UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    `party_id` UUID DEFAULT gen_random_uuid(),
     `party_type` party_type_enum NOT NULL,  -- ENUM, 
     `party_legal_structure` VARCHAR(100),
     `party_full_legal_name` VARCHAR(500) NOT NULL,
@@ -132,13 +133,14 @@ CREATE TABLE `party` (
     `residency_status` VARCHAR(50),
     `customer_since_date` DATE,
     `created_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+    `updated_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`party_id`)
 );
 
 -- Party identification information
 DROP TABLE IF EXISTS `party_identification`;
 CREATE TABLE `party_identification` (
-    `identification_id` UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    `identification_id` UUID DEFAULT gen_random_uuid(),
     `party_id` UUID NOT NULL REFERENCES party(party_id),
     `identification_type_id` INTEGER NOT NULL REFERENCES identification_type(identification_type_id),
     `identification_value` VARCHAR(500) NOT NULL,
@@ -149,25 +151,27 @@ CREATE TABLE `party_identification` (
     `is_verified` BOOLEAN DEFAULT false,
     `verified_at` TIMESTAMPTZ,
     `created_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+    `updated_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`identification_id`)
 );
 
 DROP TABLE IF EXISTS `party_reference_data_directory_entry`;
 CREATE TABLE `party_reference_data_directory_entry` (
-    `party_reference_data_directory_id` UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    `party_reference_data_directory_id` UUID DEFAULT gen_random_uuid(),
     `party_reference` UUID NOT NULL REFERENCES party(party_id),
     `directory_entry_date_type` directory_date_type_enum NOT NULL,  -- ENUM
     `directory_entry_date` TIMESTAMPTZ NOT NULL,
     `party_type` party_type_enum NOT NULL,  -- ENUM
     `created_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    `status` directory_status_enum DEFAULT 'ACTIVE'  -- ENUM
+    `status` directory_status_enum DEFAULT 'ACTIVE',  -- ENUM
+    PRIMARY KEY (`party_reference_data_directory_id`)
 );
 
 -- Address table
 DROP TABLE IF EXISTS `party_address`;
 CREATE TABLE `party_address` (
-    `address_id` UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    `address_id` UUID DEFAULT gen_random_uuid(),
     `party_id` UUID NOT NULL REFERENCES party(party_id),
 `address_type` address_type_enum NOT NULL, 
     `street_name` VARCHAR(100),
@@ -182,14 +186,15 @@ CREATE TABLE `party_address` (
     `validity_period_end` DATE,
     `is_primary` BOOLEAN DEFAULT false,
     `created_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    `updated_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`address_id`)
 );
 
 
 -- Contact points table
 DROP TABLE IF EXISTS `party_contact_point`;
 CREATE TABLE `party_contact_point` (
-    `contact_point_id` UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    `contact_point_id` UUID DEFAULT gen_random_uuid(),
     `party_id` UUID NOT NULL REFERENCES party(party_id),
      `contact_type` contact_type_enum NOT NULL,
     `contact_value` VARCHAR(500) NOT NULL,
@@ -198,13 +203,14 @@ CREATE TABLE `party_contact_point` (
     `validity_period_start` DATE,
     `validity_period_end` DATE,
     `created_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    `updated_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`contact_point_id`)
 );
 
 -- Demographics table
 DROP TABLE IF EXISTS `party_demographics`;
 CREATE TABLE `party_demographics` (
-    `demographics_id` UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    `demographics_id` UUID DEFAULT gen_random_uuid(),
     `party_reference_data_directory_id` UUID NOT NULL REFERENCES party_reference_data_directory_entry(party_reference_data_directory_id),
     `socio_economic_classification` TEXT,
     `ethnicity_religion` TEXT,
@@ -215,14 +221,15 @@ CREATE TABLE `party_demographics` (
     `political_exposure_type` political_exposure_enum NOT NULL DEFAULT 'NONE',  -- ENUM type
     `political_exposure_description` TEXT,
     `created_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+    `updated_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`demographics_id`)
 );
 
 
 -- Associations table
 DROP TABLE IF EXISTS `party_association`;
 CREATE TABLE `party_association` (
-    `association_id` UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    `association_id` UUID DEFAULT gen_random_uuid(),
     `directory_id` UUID NOT NULL REFERENCES party_reference_data_directory_entry(party_reference_data_directory_id),
     `employee_party_id` UUID REFERENCES party(party_id),
     `associate_party_id` UUID NOT NULL REFERENCES party(party_id),
@@ -234,6 +241,7 @@ CREATE TABLE `party_association` (
     `description` TEXT, 
     `created_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`association_id`),
     
     -- Additional constraints
     CONSTRAINT `chk_association_dates_valid` CHECK (
@@ -248,19 +256,20 @@ CREATE TABLE `party_association` (
 -- Association obligations/entitlements
 DROP TABLE IF EXISTS `association_obligation_entitlement`;
 CREATE TABLE `association_obligation_entitlement` (
-    `obligation_id` UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    `obligation_id` UUID DEFAULT gen_random_uuid(),
      `association_id` UUID NOT NULL REFERENCES party_association(association_id), 
     `obligation_subject` TEXT,
   `obligation_type` obligation_type_enum NOT NULL,  -- ENUM type
     `obligation_modality` obligation_modality_enum NOT NULL,  -- ENUM type
     `obligation_definition` TEXT,
-    `created_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    `created_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`obligation_id`)
 );
 
 -- Bank relations table
 DROP TABLE IF EXISTS `party_bank_relations`;
 CREATE TABLE `party_bank_relations` (
-    `bank_relations_id` UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    `bank_relations_id` UUID DEFAULT gen_random_uuid(),
     `party_reference_data_directory_id` UUID NOT NULL REFERENCES party_reference_data_directory_entry(party_reference_data_directory_id),
     `bank_relation_type` VARCHAR(100) NOT NULL,
     `business_unit_employee_reference` UUID, -- Reference to bank employee
@@ -269,12 +278,13 @@ CREATE TABLE `party_bank_relations` (
     `relationship_lifecycle_status` VARCHAR(50),
     `relationship_identification` VARCHAR(100),
     `created_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    `updated_at` TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`bank_relations_id`)
 );
 -- Document references table
 DROP TABLE IF EXISTS `party_document_reference`;
 CREATE TABLE `party_document_reference` (
-    `document_id` UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    `document_id` UUID DEFAULT gen_random_uuid(),
     `party_id` UUID NOT NULL REFERENCES party(party_id),
     `document_type` document_type_enum NOT NULL,  -- ENUM type
     `document_identification` VARCHAR(200) NOT NULL,
@@ -290,6 +300,7 @@ CREATE TABLE `party_document_reference` (
     `validity_period_end` DATE,
     `created_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`document_id`)
     
     -- Additional constraints
     CONSTRAINT `chk_document_dates_valid` CHECK (

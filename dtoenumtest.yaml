@@ -20,7 +20,7 @@ paths:
         $ref: '#/components/requestBodies/ProductDirectoryEntry'
       responses:
         '200':
-          $ref: '#/components/responses/ProductDirectoryEntry'
+          $ref: '#/components/responses/ProductDirectoryEntry1'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -46,7 +46,7 @@ paths:
         $ref: '#/components/requestBodies/ProductDirectoryEntry'
       responses:
         '200':
-          $ref: '#/components/responses/ProductDirectoryEntry'
+          $ref: '#/components/responses/ProductDirectoryEntry1'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -72,7 +72,7 @@ paths:
         $ref: '#/components/requestBodies/ProductDirectoryEntry'
       responses:
         '200':
-          $ref: '#/components/responses/ProductDirectoryEntry'
+          $ref: '#/components/responses/ProductDirectoryEntry1'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -96,7 +96,7 @@ paths:
         - $ref: '#/components/parameters/productdirectoryid'
       responses:
         '200':
-          $ref: '#/components/responses/ProductDirectoryEntry'
+          $ref: '#/components/responses/ProductDirectoryEntry1'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1275,7 +1275,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
-    ProductDirectoryEntry:
+    ProductDirectoryEntry1:
       description: ProductDirectoryEntry
       content:
         application/json:

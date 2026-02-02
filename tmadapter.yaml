@@ -1,0 +1,806 @@
+---
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+tags:
+- name: CR - CorePartyAdapter
+  description: Bank Relations operations
+paths:
+  "/tm-adapter/register":
+    post:
+      tags:
+      - CR - CorePartyAdapter
+      summary: UpCR Update details about the customer's directory entry
+      description: UpCR Update details about the customer's directory entry
+      operationId: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": '#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.CorePartyDto'
+        required: true
+      responses:
+        '200':
+          description: tm-adapter-register
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.CorePartyDto"
+components:
+  schemas:
+    PartyReferenceDataDirectoryEntryDtoV1:
+      required:
+      - DirectoryEntryDate
+      - DirectoryEntryDateType
+      - PartyType
+      type: object
+      properties:
+        Id:
+          type: string
+        PartyReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PartyDto"
+        DirectoryEntryDateType:
+          type: string
+        DirectoryEntryDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto"
+        PartyType:
+          type: string
+        SupplementaryData:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.SupplementaryDataDto"
+    com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto:
+      type: object
+      properties:
+        DateTimeContent:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        TimeZoneCode:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        DaylightSavingIndicator:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        DateTimeType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.DateTimePeriodDto:
+      type: object
+      properties:
+        FromDateTime:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto"
+        ToDateTime:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto"
+    com.bian.partyreferencedatadirectory.dto.v1.IdentifierDto:
+      type: object
+      properties:
+        IdentifierValue:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.ValueDto"
+        IdentifierIssuingAuthority:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.InvolvedPartyDto"
+        IdentifierStartDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto"
+        IdentifierEndDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto"
+    com.bian.partyreferencedatadirectory.dto.v1.InvolvedPartyDto:
+      type: object
+      properties:
+        PartyReference:
+          type: string
+        PartyInvolvement:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PartyRoleDto"
+    com.bian.partyreferencedatadirectory.dto.v1.NameDto:
+      type: object
+      properties:
+        Name:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.PartyDto:
+      required:
+      - PartyLegalStructureType
+      - PartyType
+      type: object
+      properties:
+        PartyName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PartyNameDto"
+        PartyType:
+          type: string
+        PartyDateTime:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto"
+        PartyIdentification:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PartyIdentificationDto"
+        PartyLegalStructureType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.PartyIdentificationDto:
+      required:
+      - PartyIdentification
+      - PartyIdentificationType
+      type: object
+      properties:
+        PartyIdentificationType:
+          type: string
+        PartyIdentification:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.IdentifierDto"
+    com.bian.partyreferencedatadirectory.dto.v1.PartyNameDto:
+      type: object
+      properties:
+        FirstName:
+          type: string
+        MiddleName:
+          type: string
+        FamilyName:
+          type: string
+        GivenName:
+          type: string
+        NickName:
+          type: string
+        FullName:
+          type: string
+        BirthName:
+          type: string
+        ShortName:
+          type: string
+        TradingName:
+          type: string
+        LegalName:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.PartyRoleDto:
+      required:
+      - PartyInvolvementType
+      type: object
+      properties:
+        PartyRoleType:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        PartyRoleName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.NameDto"
+        PartyRoleValidityPeriod:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimePeriodDto"
+        PartyInvolvementType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.SupplementaryDataDto:
+      type: object
+      properties:
+        partyreferencedatadirectoryentryid:
+          type: array
+          items:
+            type: string
+        partyid:
+          type: array
+          items:
+            type: string
+        person_id:
+          type: array
+          items:
+            type: string
+        organization_id:
+          type: array
+          items:
+            type: string
+        involved_party_id:
+          type: array
+          items:
+            type: string
+        party_identification_id:
+          type: array
+          items:
+            type: string
+        Party_identifier_value:
+          type: array
+          items:
+            type: string
+    com.bian.partyreferencedatadirectory.dto.v1.TextDto:
+      type: object
+      properties:
+        Text:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.ValueDto:
+      type: object
+      properties:
+        Value:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.CellPhoneDto:
+      type: object
+      properties:
+        PhoneAddressType:
+          type: string
+        PhoneNumber:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+    com.bian.partyreferencedatadirectory.dto.v1.ContactPointDto:
+      type: object
+      properties:
+        ContactPointType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.CountryDto:
+      type: object
+      properties:
+        NationalRegulatoryAuthority:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.InvolvedPartyDto"
+    com.bian.partyreferencedatadirectory.dto.v1.DocumentDirectoryEntryDto:
+      type: object
+      properties:
+        DocumentDirectoryEntryIdentification:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.DocumentDto:
+      type: object
+      properties:
+        DocumentIdentification:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.IdentifierDto"
+        DocumentVersion:
+          type: string
+        DocumentType:
+          type: string
+        DocumentStatus:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.StatusDto"
+        DocumentDateTime:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto"
+        DocumentName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.NameDto"
+        DocumentDateTimeType:
+          type: string
+        DocumentPurpose:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        DocumentFormat:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        DocumentSubject:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        DocumentDescription:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        DocumentValidityPeriod:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimePeriodDto"
+    com.bian.partyreferencedatadirectory.dto.v1.EmailDto:
+      type: object
+      properties:
+        ElectronicAddressType:
+          type: string
+        AddressDescription:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+    com.bian.partyreferencedatadirectory.dto.v1.PartyDocumentDto:
+      type: object
+      properties:
+        PartyReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PartyDto"
+        DocumentReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DocumentDto"
+        PartyDocumentType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.PostalAddressDto:
+      type: object
+      properties:
+        AddressType:
+          type: string
+        AddressLine:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        StreetName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.NameDto"
+        BuildingNumber:
+          type: string
+        PostCode:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.IdentifierDto"
+        TownName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.NameDto"
+        CountrySubDivision:
+          type: string
+        Country:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.CountryDto"
+        Department:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        SubDepartment:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+    com.bian.partyreferencedatadirectory.dto.v1.ReferenceDto:
+      type: object
+      properties:
+        politicalExposureType:
+          type: string
+        Id:
+          type: string
+        PartyLegalEntityReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PartyDto"
+        PartyNameSalutation:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.SalutationDto"
+        GovernmentIssuedIdentityReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PartyIdentificationDto"
+        GovernmentIssuedDocumentDetails:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PartyDocumentDto"
+        DocumentDirectoryEntryInstanceReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DocumentDirectoryEntryDto"
+        ResidencyStatus:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.StatusDto"
+        DateofBirth:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto"
+        Nationality:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.CountryDto"
+        ResidentialAddress:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PostalAddressDto"
+        eMailAddress:
+          type: array
+          items:
+            "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.EmailDto"
+        CellPhoneNumber:
+          type: array
+          items:
+            "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.CellPhoneDto"
+        SocialNetworkContacts:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.ContactPointDto"
+        PoliticalExposureDescriptionRecord:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        CorporateCustomerReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.InvolvedPartyDto"
+        CorporateCustomerLegalEntityReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.InvolvedPartyDto"
+        CorporateAddress:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PostalAddressDto"
+        CompanyOfficerReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.InvolvedPartyDto"
+        CompanyOfficerRole:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PartyRoleDto"
+        CustomerSinceDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto"
+        PartyFullLegalName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.NameDto"
+        PartyLegalStructure:
+          type: string
+        PartyAddress:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.PostalAddressDto"
+        PartyCountryOfResidence:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.CountryDto"
+        SupplementaryData:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.ReferenceSupplementaryDataDto"
+    com.bian.partyreferencedatadirectory.dto.v1.ReferenceSupplementaryDataDto:
+      type: object
+      properties:
+        CivilStatus:
+          type: string
+        ResidentialStatus:
+          type: string
+        party_contact_point_id:
+          type: array
+          items:
+            type: string
+        POSTAL_ADDRESS_ID:
+          type: array
+          items:
+            type: string
+        PHONE_ADDRESS_ID:
+          type: array
+          items:
+            type: string
+        ELECTRONIC_ADDRESS_ID:
+          type: array
+          items:
+            type: string
+        Document_ID:
+          type: array
+          items:
+            type: string
+        PARTY_DOCUMENT_ID:
+          type: array
+          items:
+            type: string
+        PARTY_ID:
+          type: array
+          items:
+            type: string
+    com.bian.partyreferencedatadirectory.dto.v1.SalutationDto:
+      type: object
+      properties:
+        PersonNamePrefix:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.StatusDto:
+      type: object
+      properties:
+        StatusReason:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        StatusDateTime:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimeDto"
+        StatusValidityPeriod:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DateTimePeriodDto"
+        StatusInvolvedParty:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.InvolvedPartyDto"
+    com.bian.partyreferencedatadirectory.dto.v1.DemographicsDto:
+      type: object
+      properties:
+        Id:
+          type: string
+        Socio-EconomicClassification:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        Ethnicity:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        Employment:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.InvolvedPartyDto"
+        EmploymentHistory:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        EducationHistory:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        ServicingConstraints:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        SupplementaryData:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.DemographicsSupplementaryDataDto"
+    com.bian.partyreferencedatadirectory.dto.v1.DemographicsSupplementaryDataDto:
+      type: object
+      properties:
+        Religion:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        JobTitle:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        party_id:
+          type: array
+          items:
+            type: string
+    com.bian.partyreferencedatadirectory.dto.DateTimeDto:
+      required:
+      - DateTimeType
+      type: object
+      properties:
+        DateTimeContent:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        TimeZoneCode:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        DaylightSavingIndicator:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        DateTimeType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.DateTimePeriodDto:
+      type: object
+      properties:
+        FromDateTime:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+        ToDateTime:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+    com.bian.partyreferencedatadirectory.dto.IdentifierDto:
+      type: object
+      properties:
+        IdentifierValue:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.ValueDto"
+        IdentifierIssuingAuthority:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+        IdentifierStartDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+        IdentifierEndDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+    com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto:
+      type: object
+      properties:
+        PartyReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyDto"
+        PartyInvolvement:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyRoleDto"
+    com.bian.partyreferencedatadirectory.dto.NameDto:
+      required:
+      - Name
+      type: object
+      properties:
+        Name:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.PartyDto:
+      required:
+      - PartyLegalStructureType
+      - PartyName
+      - PartyType
+      type: object
+      properties:
+        PartyName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.NameDto"
+        PartyType:
+          type: string
+        PartyDateTime:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+        PartyIdentification:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyIdentificationDto"
+        PartyLegalStructureType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.PartyIdentificationDto:
+      required:
+      - PartyIdentification
+      - PartyIdentificationType
+      type: object
+      properties:
+        PartyIdentificationType:
+          type: string
+        PartyIdentification:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.IdentifierDto"
+    com.bian.partyreferencedatadirectory.dto.PartyReferenceDataDirectoryEntryDto:
+      required:
+      - DirectoryEntryDate
+      - DirectoryEntryDateType
+      - PartyReference
+      - PartyType
+      type: object
+      properties:
+        Id:
+          type: string
+        PartyReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyDto"
+        DirectoryEntryDateType:
+          type: string
+        DirectoryEntryDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+        PartyType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.PartyRoleDto:
+      required:
+      - PartyInvolvementType
+      type: object
+      properties:
+        PartyRoleType:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        PartyRoleName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.NameDto"
+        PartyRoleValidityPeriod:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimePeriodDto"
+        PartyInvolvementType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.TextDto:
+      required:
+      - Text
+      type: object
+      properties:
+        Text:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.ValueDto:
+      required:
+      - Value
+      type: object
+      properties:
+        Value:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.ContactPointDto:
+      type: object
+      properties:
+        ContactPointType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.CountryDto:
+      type: object
+      properties:
+        NationalRegulatoryAuthority:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+    com.bian.partyreferencedatadirectory.dto.DocumentDirectoryEntryDto:
+      type: object
+      properties:
+        DocumentDirectoryEntryIdentification:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.DocumentDto:
+      type: object
+      properties:
+        DocumentIdentification:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.IdentifierDto"
+        DocumentVersion:
+          type: string
+        DocumentType:
+          type: string
+        DocumentStatus:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.StatusDto"
+        DocumentDateTime:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+        DocumentName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.NameDto"
+        DocumentDateTimeType:
+          type: string
+        DocumentPurpose:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        DocumentFormat:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        DocumentSubject:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        DocumentDescription:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        DocumentValidityPeriod:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimePeriodDto"
+    com.bian.partyreferencedatadirectory.dto.PartyDocumentDto:
+      type: object
+      properties:
+        PartyReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyDto"
+        DocumentReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DocumentDto"
+        PartyDocumentType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.PostalAddressDto:
+      type: object
+      properties:
+        AddressType:
+          type: string
+        AddressLine:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        StreetName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.NameDto"
+        BuildingNumber:
+          type: string
+        PostCode:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.IdentifierDto"
+        TownName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.NameDto"
+        CountrySubDivision:
+          type: string
+        Country:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.CountryDto"
+        Department:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        SubDepartment:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+    com.bian.partyreferencedatadirectory.dto.ReferenceDto:
+      type: object
+      properties:
+        Id:
+          type: string
+        PartyLegalEntityReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyDto"
+        PartyNameSalutation:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.NameDto"
+        GovernmentIssuedIdentityReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyIdentificationDto"
+        GovernmentIssuedDocumentDetails:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyDocumentDto"
+        DocumentDirectoryEntryInstanceReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DocumentDirectoryEntryDto"
+        ResidencyStatus:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.StatusDto"
+        DateofBirth:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+        Nationality:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.CountryDto"
+        ResidentialAddress:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PostalAddressDto"
+        eMailAddress:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.ContactPointDto"
+        CellPhoneNumber:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.ContactPointDto"
+        SocialNetworkContacts:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.ContactPointDto"
+        PoliticalExposureType:
+          type: string
+        PoliticalExposureDescriptionRecord:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        CorporateCustomerReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+        CorporateCustomerLegalEntityReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+        CorporateAddress:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PostalAddressDto"
+        CompanyOfficerReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+        CompanyOfficerRole:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyRoleDto"
+        CustomerSinceDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+        PartyFullLegalName:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.NameDto"
+        PartyLegalStructure:
+          type: string
+        PartyAddress:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PostalAddressDto"
+        PartyCountryOfResidence:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.CountryDto"
+    com.bian.partyreferencedatadirectory.dto.StatusDto:
+      type: object
+      properties:
+        StatusReason:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        StatusDateTime:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+        StatusValidityPeriod:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimePeriodDto"
+        StatusInvolvedParty:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+    com.bian.partyreferencedatadirectory.dto.DemographicsDto:
+      type: object
+      properties:
+        Id:
+          type: string
+        Socio-EconomicClassification:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        EthnicityReligion:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        Employment:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+        EmploymentHistory:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        EducationHistory:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        ServicingConstraints:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+    com.bian.partyreferencedatadirectory.dto.BankRelationsDto:
+      type: object
+      properties:
+        Id:
+          type: string
+        BankRelationType:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        BusinessUnitEmployeeReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+        BankRelationReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyRelationshipDto"
+    com.bian.partyreferencedatadirectory.dto.PartyRelationshipDto:
+      type: object
+      properties:
+        RelationshipType:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+        RelationshipValidityPeriod:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimePeriodDto"
+        RelationshipStartDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+        RelationshipEndDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimeDto"
+        RelationshipLifecycleStatus:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.StatusDto"
+        RelationshipIdentification:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.IdentifierDto"
+    com.bian.partyreferencedatadirectory.dto.AssociationsDto:
+      type: object
+      properties:
+        Id:
+          type: string
+        EmployeeReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+        AssociateReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+        AssociateType:
+          type: string
+        AssociateObligationorDependencyDescription:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyObligationOrEntitlementDto"
+        AssociationValidFromToDate:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.DateTimePeriodDto"
+        ProductInstanceReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.ProductAgreementDto"
+        PreferredBeneficiary:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.InvolvedPartyDto"
+        ProxyRepresentativePowerofAttorneyReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyPartyRelationshipDto"
+        ProductInstanseInvolvementReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.ProductAgreementInvolvementDto"
+    com.bian.partyreferencedatadirectory.dto.PartyObligationOrEntitlementDto:
+      type: object
+      properties:
+        ObligationOrEntitlementSubject:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.SubjectDto"
+        ObligationOrEntitlementType:
+          type: string
+        ObligationOrEntitlementModality:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.ServiceArrangementModalityDto"
+        ObligationOrEntitlementDefinition:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.TextDto"
+    com.bian.partyreferencedatadirectory.dto.PartyPartyRelationshipDto:
+      required:
+      - RelationshipType
+      type: object
+      properties:
+        RelationshipType:
+          type: string
+        FromParty:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyDto"
+        ToParty:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyDto"
+    com.bian.partyreferencedatadirectory.dto.ProductAgreementDto:
+      type: object
+      properties:
+        ProductAgreementType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.ProductAgreementInvolvementDto:
+      type: object
+      properties:
+        InvolvementType:
+          type: string
+        PartyReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.PartyDto"
+        AgreementReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.ProductAgreementDto"
+    com.bian.partyreferencedatadirectory.dto.ServiceArrangementModalityDto:
+      type: object
+      properties:
+        ServiceArrangementModalityType:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.SubjectDto:
+      type: object
+      properties:
+        Subject:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.CorePartyCountryDto:
+      type: object
+      properties:
+        CountryName:
+          type: string
+    com.bian.partyreferencedatadirectory.dto.v1.CorePartyDto:
+      type: object
+      properties:
+        PartyReferenceDataDirectoryId:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        PartyEntityId:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.TextDto"
+        CorePartyReference:
+          "$ref": "#/components/schemas/com.bian.partyreferencedatadirectory.dto.v1.CorePartyCountryDto"

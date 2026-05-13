@@ -449,6 +449,92 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /product-directory/{productdirectoryid}/distribution/register:
+    post:
+      tags:
+        - BQ - Distribution
+      summary: >-
+        InBQ Register a new product or service distribution details in the
+        catalog
+      description: >-
+        InBQ Register a new product or service distribution details in the
+        catalog
+      operationId: RegisterDistribution
+      parameters:
+        - $ref: '#/components/parameters/productdirectoryid'
+      requestBody:
+        $ref: '#/components/requestBodies/Distribution'
+      responses:
+        '200':
+          $ref: '#/components/responses/Distribution'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /product-directory/{productdirectoryid}/distribution/{distributionid}/update:
+    put:
+      tags:
+        - BQ - Distribution
+      summary: >-
+        UpBQ Update details of a product or service distribution details in the
+        catalog
+      description: >-
+        UpBQ Update details of a product or service distribution details in the
+        catalog
+      operationId: UpdateDistribution
+      parameters:
+        - $ref: '#/components/parameters/productdirectoryid'
+        - $ref: '#/components/parameters/distributionid'
+      requestBody:
+        $ref: '#/components/requestBodies/Distribution'
+      responses:
+        '200':
+          $ref: '#/components/responses/Distribution'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /product-directory/{productdirectoryid}/distribution/{distributionid}/retrieve:
+    get:
+      tags:
+        - BQ - Distribution
+      summary: ReBQ Retrieve product or service distribution details from the catalog
+      description: ReBQ Retrieve product or service distribution details from the catalog
+      operationId: RetrieveDistribution
+      parameters:
+        - $ref: '#/components/parameters/productdirectoryid'
+        - $ref: '#/components/parameters/distributionid'
+      responses:
+        '200':
+          $ref: '#/components/responses/Distribution'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
     HTTPError:
@@ -965,6 +1051,30 @@ components:
         "An assertion or statement with regard to a concept, a characteristic.
 
         Examples: Product pricing rules, Customer reference details
+
+        A descriptor can be atomic or composed."
+        Prospect Management
+    Distribution:
+      type: object
+      properties:
+        ProductandServiceDistributionChannel:
+          type: string
+          description: 'The distribution channel used for the product or service'
+          format: Text
+        ProductandServiceDistributionCoverage:
+          type: string
+          description: 'The geographic or demographic coverage of the distribution'
+          format: Text
+        ProductandServiceDistributionPartner:
+          type: string
+          description: 'Third-party partner involved in distribution'
+          format: Text
+        ProductandServiceDistributionSchedule:
+          $ref: '#/components/schemas/Schedule'
+      description: |-
+        "An assertion or statement with regard to a concept, a characteristic.
+
+        Examples: Product distribution channel details, Partner reference details
 
         A descriptor can be atomic or composed."
         Prospect Management
@@ -1575,6 +1685,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Production'
+    Distribution:
+      description: Distribution
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Distribution'
   parameters:
     productdirectoryid:
       name: productdirectoryid
@@ -1611,6 +1727,13 @@ components:
       style: simple
       schema:
         type: string
+    distributionid:
+      name: distributionid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
   requestBodies:
     ProductDirectoryEntry:
       content:
@@ -1641,4 +1764,10 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Production'
+      required: true
+    Distribution:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Distribution'
       required: true

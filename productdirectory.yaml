@@ -13,6 +13,42 @@ info:
 servers:
   - url: https://virtserver.swaggerhub.com/B154/BIAN/ProductDirectory/14.0.0
 paths:
+  /product-directory/dummy:
+    get:
+      tags:
+        - Dummy
+      summary: Dummy API for testing
+      description: Returns a simple dummy message.
+      operationId: getDummy
+      responses:
+        '200':
+          description: Dummy response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: This is a dummy API response.
+  /product-directory/another-dummy:
+    get:
+      tags:
+        - AnotherDummy
+      summary: Another Dummy API
+      description: Returns another simple dummy message.
+      operationId: getAnotherDummy
+      responses:
+        '200':
+          description: Another dummy response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: This is another dummy API response.
   /product-directory/{productdirectoryid}/update:
     put:
       tags:
@@ -1059,24 +1095,28 @@ components:
       properties:
         ProductandServiceDistributionChannel:
           type: string
-          description: 'The distribution channel used for the product or service'
+          description: The distribution channel used for the product or service
           format: Text
         ProductandServiceDistributionCoverage:
           type: string
-          description: 'The geographic or demographic coverage of the distribution'
+          description: The geographic or demographic coverage of the distribution
           format: Text
         ProductandServiceDistributionPartner:
           type: string
-          description: 'Third-party partner involved in distribution'
+          description: Third-party partner involved in distribution
           format: Text
         ProductandServiceDistributionSchedule:
           $ref: '#/components/schemas/Schedule'
-      description: |-
+      description: >-
         "An assertion or statement with regard to a concept, a characteristic.
 
-        Examples: Product distribution channel details, Partner reference details
+
+        Examples: Product distribution channel details, Partner reference
+        details
+
 
         A descriptor can be atomic or composed."
+
         Prospect Management
     Productfeaturetypevalues:
       enum:

@@ -589,6 +589,24 @@ paths:
                   message:
                     type: string
                     example: This is a dummy Distribution BQ API response.
+  /product-directory/new-dummy:
+    get:
+      tags:
+        - NewDummy
+      summary: New Dummy API
+      description: Returns a new dummy message.
+      operationId: getNewDummy
+      responses:
+        '200':
+          description: New dummy response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: This is a new dummy API response.
 components:
   schemas:
     HTTPError:

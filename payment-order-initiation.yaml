@@ -233,6 +233,32 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+
+  '/payment-order-initiation/{payment-order-initiation-id}/compliance/{compliance-id}/retrievenew':
+    get:
+      tags:
+        - BQ - Compliance
+      summary: ReBQ Retrieve details about a payment transaction compliance check
+      description: ReBQ Retrieve details about a payment transaction compliance check
+      operationId: RetrieveCompliancenew
+      parameters:
+        - $ref: '#/components/parameters/paymentorderinitiationid'
+        - $ref: '#/components/parameters/complianceid'
+      responses:
+        '200':
+          $ref: '#/components/responses/Compliance'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   '/payment-order-initiation/{payment-order-initiation-id}/confirmation/{confirmation-id}/retrieve':
     get:
       tags:

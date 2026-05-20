@@ -151,6 +151,33 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /product-directory/{productdirectoryid}/operations/registernew:
+    post:
+      tags:
+        - BQ - Operations
+      summary: InBQ Register a new product or service operations details in the catalog
+      description: InBQ Register a new product or service operations details in the catalog
+      operationId: RegisterOperations1
+      parameters:
+        - $ref: '#/components/parameters/productdirectoryid'
+      requestBody:
+        $ref: '#/components/requestBodies/Operations'
+      responses:
+        '200':
+          $ref: '#/components/responses/Operations'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+          
   /product-directory/{productdirectoryid}/operations/{operationsid}/update:
     put:
       tags:

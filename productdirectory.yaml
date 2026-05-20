@@ -571,6 +571,24 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /product-directory/distribution/dummy:
+    get:
+      tags:
+        - BQ - Distribution
+      summary: Dummy Distribution API
+      description: Returns a dummy response for Distribution BQ.
+      operationId: getDistributionDummy
+      responses:
+        '200':
+          description: Dummy distribution response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: This is a dummy Distribution BQ API response.
 components:
   schemas:
     HTTPError:

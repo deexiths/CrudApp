@@ -133,6 +133,31 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+
+  /payment-order-initiation/initiatenew4:
+    post:
+      tags:
+        - CR - PaymentOrderInitiationTransaction
+      summary: InCR Initiate a payment transaction
+      description: InCR Initiate a payment transaction
+      operationId: Initiatenew4
+      requestBody:
+        $ref: '#/components/requestBodies/PaymentOrderInitiationTransaction'
+      responses:
+        '200':
+          $ref: '#/components/responses/PaymentOrderInitiationTransaction'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   '/payment-order-initiation/{payment-order-initiation-id}/update':
     put:
       tags:

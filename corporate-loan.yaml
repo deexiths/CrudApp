@@ -9,7 +9,7 @@ info:
 servers:
   - url: https://virtserver.swaggerhub.com/B154/BIAN/Correspondence/14.0.0
 paths:
-  '/correspondence/{correspondence-id}/request':
+  '/Correspondence/{correspondenceid}/Request':
     put:
       tags:
         - CR - CorrespondenceOperatingSession
@@ -17,7 +17,7 @@ paths:
       description: 'RqCR Request manual intervention (e.g. handle lost, wrongly addressed correspondence)'
       operationId: Request
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: '#/components/parameters/correspondenceid'
       requestBody:
         $ref: '#/components/requestBodies/CorrespondenceOperatingSession'
       responses:
@@ -35,7 +35,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /correspondence/initiate:
+  /Correspondence/Initiate:
     post:
       tags:
         - CR - CorrespondenceOperatingSession
@@ -59,7 +59,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/update':
+  '/Correspondence/{correspondenceid}/Update':
     put:
       tags:
         - CR - CorrespondenceOperatingSession
@@ -67,7 +67,7 @@ paths:
       description: UpCR Update settings and details of the operating session (e.g. change priorities)
       operationId: Update
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: '#/components/parameters/correspondenceid'
       requestBody:
         $ref: '#/components/requestBodies/CorrespondenceOperatingSession'
       responses:
@@ -85,7 +85,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/control':
+  '/Correspondence/{correspondenceid}/Control':
     put:
       tags:
         - CR - CorrespondenceOperatingSession
@@ -93,7 +93,7 @@ paths:
       description: CoCR Control the session (e.g. suspend incoming mail)
       operationId: Control
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: '#/components/parameters/correspondenceid'
       requestBody:
         $ref: '#/components/requestBodies/CorrespondenceOperatingSession'
       responses:
@@ -111,7 +111,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/execute':
+  '/Correspondence/{correspondenceid}/Execute':
     put:
       tags:
         - CR - CorrespondenceOperatingSession
@@ -119,7 +119,7 @@ paths:
       description: ExCR Execute an automated task (e.g. statistical analysis)
       operationId: Execute
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: '#/components/parameters/correspondenceid'
       requestBody:
         $ref: '#/components/requestBodies/CorrespondenceOperatingSession'
       responses:
@@ -137,7 +137,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/retrieve':
+  '/Correspondence/{correspondenceid}/Retrieve':
     get:
       tags:
         - CR - CorrespondenceOperatingSession
@@ -145,7 +145,7 @@ paths:
       description: ReCR Retrieve details about the correspondence session
       operationId: Retrieve
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: '#/components/parameters/correspondenceid'
       responses:
         '200':
           $ref: '#/components/responses/CorrespondenceOperatingSession'
@@ -161,7 +161,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/outbound/{outbound-id}/retrieve':
+  '/Correspondence/{correspondenceid}/Outbound/{outboundid}/Retrieve':
     get:
       tags:
         - BQ - Outbound
@@ -169,8 +169,8 @@ paths:
       description: ReBQ Retrieve details about an outbound correspondence item
       operationId: RetrieveOutbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/outbound-id'
+        - $ref: '#/components/parameters/correspondenceid'
+        - $ref: '#/components/parameters/outboundid'
       responses:
         '200':
           $ref: '#/components/responses/Outbound'
@@ -186,7 +186,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/outbound-with-response/{outbound-with-response-id}/update':
+  '/Correspondence/{correspondenceid}/OutboundWithResponse/{outboundwithresponseid}/Update':
     put:
       tags:
         - BQ - OutboundWithResponse
@@ -194,8 +194,8 @@ paths:
       description: UpBQ Update details of an outbound correspondence with tracked response
       operationId: UpdateOutboundWithResponse
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/outbound-with-response-id'
+        - $ref: '#/components/parameters/correspondenceid'
+        - $ref: '#/components/parameters/outboundwithresponseid'
       requestBody:
         $ref: '#/components/requestBodies/OutboundWithResponse'
       responses:
@@ -213,7 +213,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/outbound-with-response/{outbound-with-response-id}/retrieve':
+  '/Correspondence/{correspondenceid}/OutboundWithResponse/{outboundwithresponseid}/Retrieve':
     get:
       tags:
         - BQ - OutboundWithResponse
@@ -221,8 +221,8 @@ paths:
       description: ReBQ Retrieve details about an outbound correspondence with tracked response
       operationId: RetrieveOutboundWithResponse
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/outbound-with-response-id'
+        - $ref: '#/components/parameters/correspondenceid'
+        - $ref: '#/components/parameters/outboundwithresponseid'
       responses:
         '200':
           $ref: '#/components/responses/OutboundWithResponse'
@@ -238,7 +238,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/inbound/{inbound-id}/update':
+  '/Correspondence/{correspondenceid}/Inbound/{inboundid}/Update':
     put:
       tags:
         - BQ - Inbound
@@ -246,8 +246,8 @@ paths:
       description: UpBQ Update details of an inbound correspondence item
       operationId: UpdateInbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/inbound-id'
+        - $ref: '#/components/parameters/correspondenceid'
+        - $ref: '#/components/parameters/inboundid'
       requestBody:
         $ref: '#/components/requestBodies/Inbound'
       responses:
@@ -265,7 +265,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/block-mailing/initiate':
+  '/Correspondence/{correspondenceid}/BlockMailing/Initiate':
     post:
       tags:
         - BQ - BlockMailing
@@ -273,7 +273,7 @@ paths:
       description: InBQ Initiate processing an outbound correspondence block
       operationId: InitiateBlockMailing
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: '#/components/parameters/correspondenceid'
       requestBody:
         $ref: '#/components/requestBodies/BlockMailing'
       responses:
@@ -291,7 +291,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/inbound/initiate':
+  '/Correspondence/{correspondenceid}/Inbound/Initiate':
     post:
       tags:
         - BQ - Inbound
@@ -299,7 +299,7 @@ paths:
       description: InBQ Initiate processing of an inbound correspondence item
       operationId: InitiateInbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: '#/components/parameters/correspondenceid'
       requestBody:
         $ref: '#/components/requestBodies/Inbound'
       responses:
@@ -317,7 +317,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/inbound/{inbound-id}/retrieve':
+  '/Correspondence/{correspondenceid}/Inbound/{inboundid}/Retrieve':
     get:
       tags:
         - BQ - Inbound
@@ -325,8 +325,8 @@ paths:
       description: ReBQ Retrieve details about an inbound correspondence item
       operationId: RetrieveInbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/inbound-id'
+        - $ref: '#/components/parameters/correspondenceid'
+        - $ref: '#/components/parameters/inboundid'
       responses:
         '200':
           $ref: '#/components/responses/Inbound'
@@ -342,7 +342,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/outbound-with-response/initiate':
+  '/Correspondence/{correspondenceid}/OutboundWithResponse/Initiate':
     post:
       tags:
         - BQ - OutboundWithResponse
@@ -350,7 +350,7 @@ paths:
       description: InBQ Initiate processing outbound correspondence with tracked response
       operationId: InitiateOutboundWithResponse
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: '#/components/parameters/correspondenceid'
       requestBody:
         $ref: '#/components/requestBodies/OutboundWithResponse'
       responses:
@@ -368,7 +368,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/block-mailing/{block-mailing-id}/retrieve':
+  '/Correspondence/{correspondenceid}/BlockMailing/{blockmailingid}/Retrieve':
     get:
       tags:
         - BQ - BlockMailing
@@ -376,8 +376,8 @@ paths:
       description: ReBQ Retrieve details about an outbound correspondence block
       operationId: RetrieveBlockMailing
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/block-mailing-id'
+        - $ref: '#/components/parameters/correspondenceid'
+        - $ref: '#/components/parameters/blockmailingid'
       responses:
         '200':
           $ref: '#/components/responses/BlockMailing'
@@ -393,7 +393,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/outbound/initiate':
+  '/Correspondence/{correspondenceid}/Outbound/Initiate':
     post:
       tags:
         - BQ - Outbound
@@ -401,7 +401,7 @@ paths:
       description: InBQ Initiate processing an outbound correspondence item
       operationId: InitiateOutbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: '#/components/parameters/correspondenceid'
       requestBody:
         $ref: '#/components/requestBodies/Outbound'
       responses:
@@ -419,7 +419,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/outbound/{outbound-id}/update':
+  '/Correspondence/{correspondenceid}/Outbound/{outboundid}/Update':
     put:
       tags:
         - BQ - Outbound
@@ -427,8 +427,8 @@ paths:
       description: UpBQ Update details of an outbound correspondence item
       operationId: UpdateOutbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/outbound-id'
+        - $ref: '#/components/parameters/correspondenceid'
+        - $ref: '#/components/parameters/outboundid'
       requestBody:
         $ref: '#/components/requestBodies/Outbound'
       responses:
@@ -446,7 +446,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  '/correspondence/{correspondence-id}/block-mailing/{block-mailing-id}/update':
+  '/Correspondence/{correspondenceid}/BlockMailing/{blockmailingid}/Update':
     put:
       tags:
         - BQ - BlockMailing
@@ -454,8 +454,8 @@ paths:
       description: UpBQ Update details of an outbound correspondence block
       operationId: UpdateBlockMailing
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/block-mailing-id'
+        - $ref: '#/components/parameters/correspondenceid'
+        - $ref: '#/components/parameters/blockmailingid'
       requestBody:
         $ref: '#/components/requestBodies/BlockMailing'
       responses:
@@ -1076,36 +1076,36 @@ components:
           schema:
             $ref: '#/components/schemas/BlockMailing'
   parameters:
-    correspondence-id:
-      name: correspondence-id
+    correspondenceid:
+      name: correspondenceid
       in: path
       required: true
       style: simple
       schema:
         type: string
-    outbound-id:
-      name: outbound-id
+    outboundid:
+      name: outboundid
       in: path
       required: true
       style: simple
       schema:
         type: string
-    outbound-with-response-id:
-      name: outbound-with-response-id
+    outboundwithresponseid:
+      name: outboundwithresponseid
       in: path
       required: true
       style: simple
       schema:
         type: string
-    inbound-id:
-      name: inbound-id
+    inboundid:
+      name: inboundid
       in: path
       required: true
       style: simple
       schema:
         type: string
-    block-mailing-id:
-      name: block-mailing-id
+    blockmailingid:
+      name: blockmailingid
       in: path
       required: true
       style: simple

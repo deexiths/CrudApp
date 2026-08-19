@@ -1,8 +1,7 @@
 openapi: 3.0.1
 info:
   title: Correspondence
-  description: >-
-    This service domain orchestrates the production of pre-formatted
+  description: This service domain orchestrates the production of pre-formatted
     correspondence and batches of correspondence (e.g. mail shots).
   contact:
     name: BIAN
@@ -16,32 +15,30 @@ paths:
     put:
       tags:
         - CR - CorrespondenceOperatingSession
-      summary: >-
-        RqCR Request manual intervention (e.g. handle lost, wrongly addressed
+      summary: RqCR Request manual intervention (e.g. handle lost, wrongly addressed
         correspondence)
-      description: >-
-        RqCR Request manual intervention (e.g. handle lost, wrongly addressed
-        correspondence)
+      description: RqCR Request manual intervention (e.g. handle lost, wrongly
+        addressed correspondence)
       operationId: Request
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: "#/components/parameters/correspondence-id"
       requestBody:
-        $ref: '#/components/requestBodies/CorrespondenceOperatingSession'
+        $ref: "#/components/requestBodies/CorrespondenceOperatingSession"
       responses:
-        '200':
-          $ref: '#/components/responses/CorrespondenceOperatingSession'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/CorrespondenceOperatingSession"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/initiate:
     post:
       tags:
@@ -50,22 +47,22 @@ paths:
       description: InCR Initiate the correspondence operational facility
       operationId: Initiate
       requestBody:
-        $ref: '#/components/requestBodies/CorrespondenceOperatingSession'
+        $ref: "#/components/requestBodies/CorrespondenceOperatingSession"
       responses:
-        '200':
-          $ref: '#/components/responses/CorrespondenceOperatingSession'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/CorrespondenceOperatingSession"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/directory-record/initiate:
     post:
       tags:
@@ -74,55 +71,53 @@ paths:
       description: InCR Initiate the correspondence generic Search
       operationId: InitiateSearch
       parameters:
-        - $ref: '#/components/parameters/pagetoken'
-        - $ref: '#/components/parameters/pagesize'
+        - $ref: "#/components/parameters/pagetoken"
+        - $ref: "#/components/parameters/pagesize"
       requestBody:
-        $ref: '#/components/requestBodies/DirectoryRecord'
+        $ref: "#/components/requestBodies/DirectoryRecord"
       responses:
-        '200':
-          $ref: '#/components/responses/DirectoryRecord'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/DirectoryRecord"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/update:
     put:
       tags:
         - CR - CorrespondenceOperatingSession
-      summary: >-
-        UpCR Update settings and details of the operating session (e.g. change
+      summary: UpCR Update settings and details of the operating session (e.g. change
         priorities)
-      description: >-
-        UpCR Update settings and details of the operating session (e.g. change
-        priorities)
+      description: UpCR Update settings and details of the operating session (e.g.
+        change priorities)
       operationId: Update
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: "#/components/parameters/correspondence-id"
       requestBody:
-        $ref: '#/components/requestBodies/CorrespondenceOperatingSession'
+        $ref: "#/components/requestBodies/CorrespondenceOperatingSession"
       responses:
-        '200':
-          $ref: '#/components/responses/CorrespondenceOperatingSession'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/CorrespondenceOperatingSession"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/control:
     put:
       tags:
@@ -131,24 +126,24 @@ paths:
       description: CoCR Control the session (e.g. suspend incoming mail)
       operationId: Control
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: "#/components/parameters/correspondence-id"
       requestBody:
-        $ref: '#/components/requestBodies/CorrespondenceOperatingSession'
+        $ref: "#/components/requestBodies/CorrespondenceOperatingSession"
       responses:
-        '200':
-          $ref: '#/components/responses/CorrespondenceOperatingSession'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/CorrespondenceOperatingSession"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/execute:
     put:
       tags:
@@ -157,24 +152,24 @@ paths:
       description: ExCR Execute an automated task (e.g. statistical analysis)
       operationId: Execute
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: "#/components/parameters/correspondence-id"
       requestBody:
-        $ref: '#/components/requestBodies/CorrespondenceOperatingSession'
+        $ref: "#/components/requestBodies/CorrespondenceOperatingSession"
       responses:
-        '200':
-          $ref: '#/components/responses/CorrespondenceOperatingSession'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/CorrespondenceOperatingSession"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/retrieve:
     get:
       tags:
@@ -183,22 +178,22 @@ paths:
       description: ReCR Retrieve details about the correspondence session
       operationId: Retrieve
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: "#/components/parameters/correspondence-id"
       responses:
-        '200':
-          $ref: '#/components/responses/CorrespondenceOperatingSession'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/CorrespondenceOperatingSession"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/outbound/{outbound-id}/retrieve:
     get:
       tags:
@@ -207,23 +202,23 @@ paths:
       description: ReBQ Retrieve details about an outbound correspondence item
       operationId: RetrieveOutbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/outbound-id'
+        - $ref: "#/components/parameters/correspondence-id"
+        - $ref: "#/components/parameters/outbound-id"
       responses:
-        '200':
-          $ref: '#/components/responses/Outbound'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/Outbound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/outbound-with-response/{outbound-with-response-id}/update:
     put:
       tags:
@@ -232,54 +227,52 @@ paths:
       description: UpBQ Update details of an outbound correspondence with tracked response
       operationId: UpdateOutboundWithResponse
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/outbound-with-response-id'
+        - $ref: "#/components/parameters/correspondence-id"
+        - $ref: "#/components/parameters/outbound-with-response-id"
       requestBody:
-        $ref: '#/components/requestBodies/OutboundWithResponse'
+        $ref: "#/components/requestBodies/OutboundWithResponse"
       responses:
-        '200':
-          $ref: '#/components/responses/OutboundWithResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/OutboundWithResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/outbound-with-response/{outbound-with-response-id}/retrieve:
     get:
       tags:
         - BQ - OutboundWithResponse
-      summary: >-
-        ReBQ Retrieve details about an outbound correspondence with tracked
+      summary: ReBQ Retrieve details about an outbound correspondence with tracked
         response
-      description: >-
-        ReBQ Retrieve details about an outbound correspondence with tracked
+      description: ReBQ Retrieve details about an outbound correspondence with tracked
         response
       operationId: RetrieveOutboundWithResponse
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/outbound-with-response-id'
+        - $ref: "#/components/parameters/correspondence-id"
+        - $ref: "#/components/parameters/outbound-with-response-id"
       responses:
-        '200':
-          $ref: '#/components/responses/OutboundWithResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/OutboundWithResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/inbound/{inbound-id}/update:
     put:
       tags:
@@ -288,25 +281,25 @@ paths:
       description: UpBQ Update details of an inbound correspondence item
       operationId: UpdateInbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/inbound-id'
+        - $ref: "#/components/parameters/correspondence-id"
+        - $ref: "#/components/parameters/inbound-id"
       requestBody:
-        $ref: '#/components/requestBodies/Inbound'
+        $ref: "#/components/requestBodies/Inbound"
       responses:
-        '200':
-          $ref: '#/components/responses/Inbound'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/Inbound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/block-mailing/initiate:
     post:
       tags:
@@ -315,24 +308,24 @@ paths:
       description: InBQ Initiate processing an outbound correspondence block
       operationId: InitiateBlockMailing
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: "#/components/parameters/correspondence-id"
       requestBody:
-        $ref: '#/components/requestBodies/BlockMailing'
+        $ref: "#/components/requestBodies/BlockMailing"
       responses:
-        '200':
-          $ref: '#/components/responses/BlockMailing'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/BlockMailing"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/inbound/initiate:
     post:
       tags:
@@ -341,24 +334,24 @@ paths:
       description: InBQ Initiate processing of an inbound correspondence item
       operationId: InitiateInbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: "#/components/parameters/correspondence-id"
       requestBody:
-        $ref: '#/components/requestBodies/Inbound'
+        $ref: "#/components/requestBodies/Inbound"
       responses:
-        '200':
-          $ref: '#/components/responses/Inbound'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/Inbound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/inbound/{inbound-id}/retrieve:
     get:
       tags:
@@ -367,23 +360,23 @@ paths:
       description: ReBQ Retrieve details about an inbound correspondence item
       operationId: RetrieveInbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/inbound-id'
+        - $ref: "#/components/parameters/correspondence-id"
+        - $ref: "#/components/parameters/inbound-id"
       responses:
-        '200':
-          $ref: '#/components/responses/Inbound'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/Inbound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/outbound-with-response/initiate:
     post:
       tags:
@@ -392,24 +385,24 @@ paths:
       description: InBQ Initiate processing outbound correspondence with tracked response
       operationId: InitiateOutboundWithResponse
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: "#/components/parameters/correspondence-id"
       requestBody:
-        $ref: '#/components/requestBodies/OutboundWithResponse'
+        $ref: "#/components/requestBodies/OutboundWithResponse"
       responses:
-        '200':
-          $ref: '#/components/responses/OutboundWithResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/OutboundWithResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/block-mailing/{block-mailing-id}/retrieve:
     get:
       tags:
@@ -418,23 +411,23 @@ paths:
       description: ReBQ Retrieve details about an outbound correspondence block
       operationId: RetrieveBlockMailing
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/block-mailing-id'
+        - $ref: "#/components/parameters/correspondence-id"
+        - $ref: "#/components/parameters/block-mailing-id"
       responses:
-        '200':
-          $ref: '#/components/responses/BlockMailing'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/BlockMailing"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/outbound/initiate:
     post:
       tags:
@@ -443,24 +436,24 @@ paths:
       description: InBQ Initiate processing an outbound correspondence item
       operationId: InitiateOutbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
+        - $ref: "#/components/parameters/correspondence-id"
       requestBody:
-        $ref: '#/components/requestBodies/Outbound'
+        $ref: "#/components/requestBodies/Outbound"
       responses:
-        '200':
-          $ref: '#/components/responses/Outbound'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/Outbound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/outbound/{outbound-id}/update:
     put:
       tags:
@@ -469,25 +462,25 @@ paths:
       description: UpBQ Update details of an outbound correspondence item
       operationId: UpdateOutbound
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/outbound-id'
+        - $ref: "#/components/parameters/correspondence-id"
+        - $ref: "#/components/parameters/outbound-id"
       requestBody:
-        $ref: '#/components/requestBodies/Outbound'
+        $ref: "#/components/requestBodies/Outbound"
       responses:
-        '200':
-          $ref: '#/components/responses/Outbound'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/Outbound"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
   /v1/correspondence/{correspondence-id}/block-mailing/{block-mailing-id}/update:
     put:
       tags:
@@ -496,25 +489,25 @@ paths:
       description: UpBQ Update details of an outbound correspondence block
       operationId: UpdateBlockMailing
       parameters:
-        - $ref: '#/components/parameters/correspondence-id'
-        - $ref: '#/components/parameters/block-mailing-id'
+        - $ref: "#/components/parameters/correspondence-id"
+        - $ref: "#/components/parameters/block-mailing-id"
       requestBody:
-        $ref: '#/components/requestBodies/BlockMailing'
+        $ref: "#/components/requestBodies/BlockMailing"
       responses:
-        '200':
-          $ref: '#/components/responses/BlockMailing'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "200":
+          $ref: "#/components/responses/BlockMailing"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 components:
   schemas:
     HTTPError:
@@ -554,7 +547,49 @@ components:
         - FulfillmentDate
         - EntryDate
       type: string
-      description: ">\r\n* `MaturityDate` - \r\n* `InitiatedDate` - \r\n* `RequestedDate` - \r\n* `ExecutedDate` - \r\n* `OpenDate` - \r\n* `CloseDate` - \r\n* `ExpiryDate` - \r\n* `EffectiveDate` - \r\n* `CreatingDate` - \r\n* `ActivationDate` - \r\n* `DeactivationDate` - \r\n* `BlockingDate` - \r\n* `SendingDate` - \r\n* `ValidFromDate` - \r\n* `ValidToDate` - \r\n* `ReceivingDate` - \r\n* `SigningDate` - \r\n* `DueDate` - \r\n* `ValueDate` - \r\n* `FulfillmentDate` - \r\n* `EntryDate` - \r\n"
+      description: ">\r
+
+        * `MaturityDate` - \r
+
+        * `InitiatedDate` - \r
+
+        * `RequestedDate` - \r
+
+        * `ExecutedDate` - \r
+
+        * `OpenDate` - \r
+
+        * `CloseDate` - \r
+
+        * `ExpiryDate` - \r
+
+        * `EffectiveDate` - \r
+
+        * `CreatingDate` - \r
+
+        * `ActivationDate` - \r
+
+        * `DeactivationDate` - \r
+
+        * `BlockingDate` - \r
+
+        * `SendingDate` - \r
+
+        * `ValidFromDate` - \r
+
+        * `ValidToDate` - \r
+
+        * `ReceivingDate` - \r
+
+        * `SigningDate` - \r
+
+        * `DueDate` - \r
+
+        * `ValueDate` - \r
+
+        * `FulfillmentDate` - \r
+
+        * `EntryDate` - \r\n"
     Datetime:
       type: object
       properties:
@@ -568,20 +603,25 @@ components:
           format: Text
         DaylightSavingIndicator:
           type: string
-          description: ''
+          description: ""
           format: Text
         DateTimeType:
-          $ref: '#/components/schemas/Datetimetypevalues'
-      description: >-
-        Date when the response expected. This can result in chasing activities
-        and notification to the sending unit
+          $ref: "#/components/schemas/Datetimetypevalues"
+      description: Date when the response expected. This can result in chasing
+        activities and notification to the sending unit
     Correspondencetypevalues:
       enum:
         - UnsolicitedMessage
         - Complaint
         - EnumerationLiteral
       type: string
-      description: ">\r\n* `UnsolicitedMessage` - \r\n* `Complaint` - \r\n* `EnumerationLiteral` - \r\n"
+      description: ">\r
+
+        * `UnsolicitedMessage` - \r
+
+        * `Complaint` - \r
+
+        * `EnumerationLiteral` - \r\n"
     Addresstypevalues:
       enum:
         - PostalAddress
@@ -590,15 +630,25 @@ components:
         - LongitudeAddress
         - ElectronicAddress
       type: string
-      description: ">\r\n* `PostalAddress` - \r\n* `GeolocationAddress` - \r\n* `LatitudeAddress` - \r\n* `LongitudeAddress` - \r\n* `ElectronicAddress` - \r\n"
+      description: ">\r
+
+        * `PostalAddress` - \r
+
+        * `GeolocationAddress` - \r
+
+        * `LatitudeAddress` - \r
+
+        * `LongitudeAddress` - \r
+
+        * `ElectronicAddress` - \r\n"
     Address:
       type: object
       properties:
         AddressType:
-          $ref: '#/components/schemas/Addresstypevalues'
+          $ref: "#/components/schemas/Addresstypevalues"
         AddressDescription:
           type: string
-          description: ''
+          description: ""
           format: Text
       description: The address for message delivery (needs to match channel selection)
     Correspondencecommunicationmethodtypevalues:
@@ -611,7 +661,21 @@ components:
         - Postalservice
         - File
       type: string
-      description: ">\r\n* `Fax` - Transmission by fax.\r\n* `Email` - Transmission by e-mail.\r\n* `Proprietary` - Transmission by proprietary method.\r\n* `Online` - Transmission on line, for example, in a web portal.\r\n* `Phone` - Transmission by telephone.\r\n* `Postalservice` - Transmission by postal service.\r\n* `File` - Transmission by file transfer.\r\n"
+      description: ">\r
+
+        * `Fax` - Transmission by fax.\r
+
+        * `Email` - Transmission by e-mail.\r
+
+        * `Proprietary` - Transmission by proprietary method.\r
+
+        * `Online` - Transmission on line, for example, in a web portal.\r
+
+        * `Phone` - Transmission by telephone.\r
+
+        * `Postalservice` - Transmission by postal service.\r
+
+        * `File` - Transmission by file transfer.\r\n"
     Correspondencemediumtypevalues:
       enum:
         - Paper
@@ -619,45 +683,52 @@ components:
         - Paperelectronic
         - Biometric
       type: string
-      description: ">\r\n* `Paper` - Presentation is made on paper.\r\n* `Electronic` - Presentation is made electronically.\r\n* `Paperelectronic` - Presentation is made on paper and/or electronically.\r\n* `Biometric` - Biometric medium.\r\n"
+      description: ">\r
+
+        * `Paper` - Presentation is made on paper.\r
+
+        * `Electronic` - Presentation is made electronically.\r
+
+        * `Paperelectronic` - Presentation is made on paper and/or
+        electronically.\r
+
+        * `Biometric` - Biometric medium.\r\n"
     Correspondence:
       type: object
       properties:
         CorrespondenceType:
-          $ref: '#/components/schemas/Correspondencetypevalues'
+          $ref: "#/components/schemas/Correspondencetypevalues"
         CorrespondenceAddress:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         CorrespondenceDateTime:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
         CorrespondenceContent:
           type: string
           description: The message content (aligned to template as appropriate)
           format: Text
         CorrespondenceTemplate:
           type: string
-          description: >-
-            Template used to assemble standard format correspondence (can be
+          description: Template used to assemble standard format correspondence (can be
             supplied with the correspondence or maintained within the
             Correspondence service domain as appropriate)
           format: Text
         CorrespondenceCommunicationMethod:
-          $ref: '#/components/schemas/Correspondencecommunicationmethodtypevalues'
+          $ref: "#/components/schemas/Correspondencecommunicationmethodtypevalues"
         CorrespondenceAddressType:
-          $ref: '#/components/schemas/Addresstypevalues'
+          $ref: "#/components/schemas/Addresstypevalues"
         CorrespondenceMedium:
-          $ref: '#/components/schemas/Correspondencemediumtypevalues'
-      description: >-
-        Reference to the inbound correspondence received that has been matched
-        to the outbound message
+          $ref: "#/components/schemas/Correspondencemediumtypevalues"
+      description: Reference to the inbound correspondence received that has been
+        matched to the outbound message
     OutboundWithResponse:
       type: object
       properties:
         ResponseDueDate:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
         ResponseCorrespondenceReference:
-          $ref: '#/components/schemas/Correspondence'
+          $ref: "#/components/schemas/Correspondence"
         ResponseCorrespondenceRecord:
-          $ref: '#/components/schemas/Correspondence'
+          $ref: "#/components/schemas/Correspondence"
       description: >-
         The collection of operational serivces/functions offered by the
         operational facility
@@ -671,12 +742,11 @@ components:
         properties:
           BlockmailingRecord:
             type: string
-            description: >-
-              Used to track receipt and return of the individual messages making
+            description: Used to track receipt and return of the individual messages making
               up the block mail
             format: Object
           OutboundCorrespondenceReference:
-            $ref: '#/components/schemas/Outbound'
+            $ref: "#/components/schemas/Outbound"
         description: >-
           The collection of operational serivces/functions offered by the
           operational facility
@@ -704,54 +774,50 @@ components:
       properties:
         IdentifierValue:
           type: string
-          description: >-
-            tThe actual unique code or number (e.g., passport number, drivers
+          description: tThe actual unique code or number (e.g., passport number, drivers
             license number).
           format: Value
         IdentifierIssuerReference:
-          $ref: '#/components/schemas/Involvedparty'
+          $ref: "#/components/schemas/Involvedparty"
         IdentifierStartDate:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
         IdentifierEndDate:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
       description: Reference to the inbound correspondence item
     Employee:
       type: object
       properties:
         Employee:
           type: string
-          description: 'Party who is employed by an employer. '
+          description: "Party who is employed by an employer. "
           format: Class
-      description: >-
-        Identified internal addressee (from reference details extracted from the
-        content where possible)
+      description: Identified internal addressee (from reference details extracted
+        from the content where possible)
     Inbound:
       type: object
       properties:
         InboundCorrespondenceInstanceReference:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         InboundCorrespondenceRecord:
-          $ref: '#/components/schemas/Correspondence'
+          $ref: "#/components/schemas/Correspondence"
         InboundCorrespondenceType:
-          $ref: '#/components/schemas/Correspondencetypevalues'
+          $ref: "#/components/schemas/Correspondencetypevalues"
         InboundCorrespondenceContent:
           type: string
           description: The inbound message content in whatever format appropriate
           format: Text
         InboundCorrespondenceAddressee:
           type: string
-          description: >-
-            The identified source of inbound message (extracted from the
-            content)
+          description: The identified source of inbound message (extracted from the content)
           format: Object
         InboundCorrespondenceCustomerReference:
-          $ref: '#/components/schemas/Involvedparty'
+          $ref: "#/components/schemas/Involvedparty"
         InboundCorrespondenceEmployeeReference:
-          $ref: '#/components/schemas/Employee'
+          $ref: "#/components/schemas/Employee"
         DateType:
-          $ref: '#/components/schemas/Datetimetypevalues'
+          $ref: "#/components/schemas/Datetimetypevalues"
         Date:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
       description: >-
         The collection of operational serivces/functions offered by the
         operational facility
@@ -763,19 +829,23 @@ components:
         - CommunicationChannel
         - AuthenticationChannel
       type: string
-      description: ">\r\n* `CommunicationChannel` - \r\n* `AuthenticationChannel` - \r\n"
+      description: ">\r
+
+        * `CommunicationChannel` - \r
+
+        * `AuthenticationChannel` - \r\n"
     Channel:
       type: object
       properties:
         ChannelType:
-          $ref: '#/components/schemas/Channeltypevalues'
+          $ref: "#/components/schemas/Channeltypevalues"
       description: Identifies the preferred media and channel for delivery of the message
     Schedule:
       type: object
       properties:
         ScheduleType:
           type: string
-          description: ''
+          description: ""
           format: Text
       description: The time schedule that system services are available for use.
     Systemidentificationtypevalues:
@@ -787,14 +857,28 @@ components:
         - Systemname
         - Identification
       type: string
-      description: ">\r\n* `Model` - Identification of a model for a given manufacturer.\r\n* `Serialnumber` - Serial number of a component.\r\n* `Approvalnumber` - Unique approval number for a component, delivered by a certification body.\r\n* `Systemversion` - Version of the system, eg, \"4.0.1\" to indicate version 4.0.1.\r\n* `Systemname` - Name by which a system is known.\r\n* `Identification` - Identification of a system.\r\n"
+      description: ">\r
+
+        * `Model` - Identification of a model for a given manufacturer.\r
+
+        * `Serialnumber` - Serial number of a component.\r
+
+        * `Approvalnumber` - Unique approval number for a component, delivered
+        by a certification body.\r
+
+        * `Systemversion` - Version of the system, eg, \"4.0.1\" to indicate
+        version 4.0.1.\r
+
+        * `Systemname` - Name by which a system is known.\r
+
+        * `Identification` - Identification of a system.\r\n"
     Datetimeperiod:
       type: object
       properties:
         FromDateTime:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
         ToDateTime:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
       description: Period of time during which the status is valid.
     Status:
       type: object
@@ -804,11 +888,11 @@ components:
           description: Specifies the reasons for the status.
           format: Text
         StatusDateTime:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
         StatusValidityPeriod:
-          $ref: '#/components/schemas/Datetimeperiod'
+          $ref: "#/components/schemas/Datetimeperiod"
         StatusInvolvedPartyReference:
-          $ref: '#/components/schemas/Involvedparty'
+          $ref: "#/components/schemas/Involvedparty"
       description: Status of the system. (ISO20022)
     Systemstatustypevalues:
       enum:
@@ -818,35 +902,47 @@ components:
         - Closing
         - Reservemaintenanceperiodstart
       type: string
-      description: ">\r\n* `Suspended` - System is suspended, that is, not operational.\r\n* `Active` - System is functioning normally, that is, operational.\r\n* `Closed` - System is closed (eg. normal closure of an RTGS).\r\n* `Closing` - System needs to wait for completion of intermediate internal activities before going to a status Closed.\r\n* `Reservemaintenanceperiodstart` - System is starting a new maintenance period.\r\n"
+      description: ">\r
+
+        * `Suspended` - System is suspended, that is, not operational.\r
+
+        * `Active` - System is functioning normally, that is, operational.\r
+
+        * `Closed` - System is closed (eg. normal closure of an RTGS).\r
+
+        * `Closing` - System needs to wait for completion of intermediate
+        internal activities before going to a status Closed.\r
+
+        * `Reservemaintenanceperiodstart` - System is starting a new maintenance
+        period.\r\n"
     CommunicationChannel:
       type: object
       properties:
         ChannelType:
-          $ref: '#/components/schemas/Channeltypevalues'
+          $ref: "#/components/schemas/Channeltypevalues"
         SystemAccessSchedule:
-          $ref: '#/components/schemas/Schedule'
+          $ref: "#/components/schemas/Schedule"
         SystemType:
           type: string
-          description: ''
+          description: ""
           format: Text
         SystemIdentification:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         SystemIdentificationType:
-          $ref: '#/components/schemas/Systemidentificationtypevalues'
+          $ref: "#/components/schemas/Systemidentificationtypevalues"
         SystemStatus:
-          $ref: '#/components/schemas/Status'
+          $ref: "#/components/schemas/Status"
         SystemStatusType:
-          $ref: '#/components/schemas/Systemstatustypevalues'
+          $ref: "#/components/schemas/Systemstatustypevalues"
         SystemDateTime:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
         SystemLanguage:
           type: string
           description: |2-
                 
             Specifies the language used by the system. (ISO20022)
           format: Text
-      description: '???'
+      description: ???
     Devicetypevalues:
       enum:
         - Securecardreader
@@ -867,7 +963,50 @@ components:
         - Unknown
         - BiometricDevice
       type: string
-      description: ">\r\n* `Securecardreader` - Secure card reader attached to the customer device\r\n* `Nonsecurecardreader` - Non-secure card reader attached to the customer device.\r\n* `Mobile` - Mobile phone\r\n* `Tablet` - Tablet\r\n* `Personalcomputer` - Personal computer\r\n* `Othernational` - Other device defined at national level\r\n* `Otherprivate` - Other device defined in a private way.\r\n* `Wearable` - Wearable device.\r\n* `Vehicle` - Vehicle.\r\n* `Embedded` - Embedded in a device.\r\n* `Keyfob` - Key Fob\r\n* `Jewellery` - Jewellery\r\n* `Sticker` - Sticker\r\n* `Gamingdevice` - Gaming Device\r\n* `Watch` - Watch\r\n* `Unknown` - Device type unknown\r\n* `BiometricDevice` - A biometric device is a security identification and authentication device. Such devices use automated methods of verifying or recognising the identity of a living person based on a physiological or behavioral characteristic.\nhttps://en.wikipedia.org/wiki/Biometric_device\n\r\n"
+      description: ">\r
+
+        * `Securecardreader` - Secure card reader attached to the customer
+        device\r
+
+        * `Nonsecurecardreader` - Non-secure card reader attached to the
+        customer device.\r
+
+        * `Mobile` - Mobile phone\r
+
+        * `Tablet` - Tablet\r
+
+        * `Personalcomputer` - Personal computer\r
+
+        * `Othernational` - Other device defined at national level\r
+
+        * `Otherprivate` - Other device defined in a private way.\r
+
+        * `Wearable` - Wearable device.\r
+
+        * `Vehicle` - Vehicle.\r
+
+        * `Embedded` - Embedded in a device.\r
+
+        * `Keyfob` - Key Fob\r
+
+        * `Jewellery` - Jewellery\r
+
+        * `Sticker` - Sticker\r
+
+        * `Gamingdevice` - Gaming Device\r
+
+        * `Watch` - Watch\r
+
+        * `Unknown` - Device type unknown\r
+
+        * `BiometricDevice` - A biometric device is a security identification
+        and authentication device. Such devices use automated methods of
+        verifying or recognising the identity of a living person based on a
+        physiological or behavioral characteristic.
+
+        https://en.wikipedia.org/wiki/Biometric_device
+
+        \r\n"
     Organisationidentificationtypevalues:
       enum:
         - LEI
@@ -888,30 +1027,107 @@ components:
         - Taxidentificationnumber
         - EANGLN
       type: string
-      description: ">\r\n* `LEI` - Legal Entity Identifier is a code allocated to a party as described in ISO 17442 \"Financial Services - Legal Entity Identifier (LEI)\".\r\n* `ELF` - Entity Legal Forms is a code allocated to a party as described in ISO 20275 \"Financial services  Entity legal forms (ELF)\". \r\n* `MIC` - Market Identifier Code. Identification of a financial market, as stipulated in the norm ISO 10383 \"Codes for exchanges and market identifications\".\r\n* `BICFI` - Code allocated to a financial institution by the ISO 9362 Registration Authority as described in ISO 9362 \"Banking - Banking telecommunication messages - Business identifier code (BIC)\".\r\n* `Bankpartyidentification` - Unique and unambiguous assignment made by a specific bank or similar financial institution to identify a relationship as defined between the bank and its client.\r\n* `Centralbankidentificationnumber` - A unique identification number assigned by a central bank to identify an organisation.\r\n* `Clearingidentificationnumber` - A unique identification number assigned by a clearing house to identify an organisation\r\n* `Certificateofincorporationnumber` - A unique identification number assigned by a designated authority to a certificate of incorporation and used to identify an organisation.\r\n* `Countryidentificationcode` - Country authority given organisation identification (e.g., corporate registration number)\r\n* `Customernumber` - Number assigned by an issuer to identify a customer.\nNumber assigned by a party to identify a creditor or debtor relationship.\r\n* `Datauniversalnumberingsystem` - A unique identification number provided by Dun & Bradstreet to identify an organisation.\r\n* `Employeridentificationnumber` - Number assigned by a registration authority to an employer.\r\n* `Gs1glnidentifier` - Global Location Number. A non-significant reference number used to identify legal entities, functional entities, or physical entities according to GS1 numbering scheme rules.The number is used to retrieve detailed information that is linked to it.\r\n* `SIREN` - The SIREN number is a 9 digit code assigned by INSEE, the French National Institute for Statistics and Economic Studies, to identify an organisation in France.\r\n* `SIRET` - The SIRET number is a 14 digit code assigned by INSEE, the French National Institute for Statistics and Economic Studies, to identify an organisation unit in France. It consists of the SIREN number, followed by a five digit classification number, to identify the local geographical unit of that entity\r\n* `Taxidentificationnumber` - Number assigned by a tax authority to identify an organisation.\r\n* `EANGLN` - Global Location Number. A non-significant reference number used to identify legal entities, functional entities, or physical entities according to the European Association for Numbering (EAN) numbering scheme rules. The number is used to retrieve detailed information that is linked to it. (iso20022)\r\n"
+      description: ">\r
+
+        * `LEI` - Legal Entity Identifier is a code allocated to a party as
+        described in ISO 17442 \"Financial Services - Legal Entity Identifier
+        (LEI)\".\r
+
+        * `ELF` - Entity Legal Forms is a code allocated to a party as described
+        in ISO 20275 \"Financial services  Entity legal forms (ELF)\". \r
+
+        * `MIC` - Market Identifier Code. Identification of a financial market,
+        as stipulated in the norm ISO 10383 \"Codes for exchanges and market
+        identifications\".\r
+
+        * `BICFI` - Code allocated to a financial institution by the ISO 9362
+        Registration Authority as described in ISO 9362 \"Banking - Banking
+        telecommunication messages - Business identifier code (BIC)\".\r
+
+        * `Bankpartyidentification` - Unique and unambiguous assignment made by
+        a specific bank or similar financial institution to identify a
+        relationship as defined between the bank and its client.\r
+
+        * `Centralbankidentificationnumber` - A unique identification number
+        assigned by a central bank to identify an organisation.\r
+
+        * `Clearingidentificationnumber` - A unique identification number
+        assigned by a clearing house to identify an organisation\r
+
+        * `Certificateofincorporationnumber` - A unique identification number
+        assigned by a designated authority to a certificate of incorporation and
+        used to identify an organisation.\r
+
+        * `Countryidentificationcode` - Country authority given organisation
+        identification (e.g., corporate registration number)\r
+
+        * `Customernumber` - Number assigned by an issuer to identify a
+        customer.
+
+        Number assigned by a party to identify a creditor or debtor
+        relationship.\r
+
+        * `Datauniversalnumberingsystem` - A unique identification number
+        provided by Dun & Bradstreet to identify an organisation.\r
+
+        * `Employeridentificationnumber` - Number assigned by a registration
+        authority to an employer.\r
+
+        * `Gs1glnidentifier` - Global Location Number. A non-significant
+        reference number used to identify legal entities, functional entities,
+        or physical entities according to GS1 numbering scheme rules.The number
+        is used to retrieve detailed information that is linked to it.\r
+
+        * `SIREN` - The SIREN number is a 9 digit code assigned by INSEE, the
+        French National Institute for Statistics and Economic Studies, to
+        identify an organisation in France.\r
+
+        * `SIRET` - The SIRET number is a 14 digit code assigned by INSEE, the
+        French National Institute for Statistics and Economic Studies, to
+        identify an organisation unit in France. It consists of the SIREN
+        number, followed by a five digit classification number, to identify the
+        local geographical unit of that entity\r
+
+        * `Taxidentificationnumber` - Number assigned by a tax authority to
+        identify an organisation.\r
+
+        * `EANGLN` - Global Location Number. A non-significant reference number
+        used to identify legal entities, functional entities, or physical
+        entities according to the European Association for Numbering (EAN)
+        numbering scheme rules. The number is used to retrieve detailed
+        information that is linked to it. (iso20022)\r\n"
     Organisationidentification:
       type: object
       properties:
         OrganisationIdentificationType:
-          $ref: '#/components/schemas/Organisationidentificationtypevalues'
+          $ref: "#/components/schemas/Organisationidentificationtypevalues"
         OrganisationIdentification:
-          $ref: '#/components/schemas/Identifier'
-      description: ''
+          $ref: "#/components/schemas/Identifier"
+      description: ""
     Organisationdatetimetypevalues:
       enum:
         - RegistrationDate
         - EstablishmentDate
         - EntityExpirationDate
       type: string
-      description: ">\r\n* `RegistrationDate` - Date and time at which a given organisation was officially registered. (ISO20022)\r\n* `EstablishmentDate` - Date when the organisation was established. ISO20022\r\n* `EntityExpirationDate` - The date the Legal Entity ceased operation or was merged. ISO20022\r\n"
+      description: ">\r
+
+        * `RegistrationDate` - Date and time at which a given organisation was
+        officially registered. (ISO20022)\r
+
+        * `EstablishmentDate` - Date when the organisation was established.
+        ISO20022\r
+
+        * `EntityExpirationDate` - The date the Legal Entity ceased operation or
+        was merged. ISO20022\r\n"
     Organisationdatetime:
       type: object
       properties:
         OrganisatioDate:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
         OrganisatioDateType:
-          $ref: '#/components/schemas/Organisationdatetimetypevalues'
-      description: ''
+          $ref: "#/components/schemas/Organisationdatetimetypevalues"
+      description: ""
     Organisationtypevalues:
       enum:
         - LegalEntity
@@ -921,32 +1137,49 @@ components:
         - Charity
         - GovernmentBody
       type: string
-      description: ">\r\n* `LegalEntity` - \r\n* `Authority` - \r\n* `OrganisationUnit` - \r\n* `FinancialInstitution` - \r\n* `Charity` - \r\n* `GovernmentBody` - \r\n"
+      description: ">\r
+
+        * `LegalEntity` - \r
+
+        * `Authority` - \r
+
+        * `OrganisationUnit` - \r
+
+        * `FinancialInstitution` - \r
+
+        * `Charity` - \r
+
+        * `GovernmentBody` - \r\n"
     Name:
       type: object
       properties:
         Name:
           type: string
-          description: >-
-            A name is a word or phrase that constitutes the distinctive
+          description: A name is a word or phrase that constitutes the distinctive
             designation of a person, place, thing or concept. (UN/CEFAT)
           format: DataType
-      description: ''
+      description: ""
     Organisationnametypevalues:
       enum:
         - ShortName
         - TradingName
         - LegalName
       type: string
-      description: ">\r\n* `ShortName` - \r\n* `TradingName` - \r\n* `LegalName` - \r\n"
+      description: ">\r
+
+        * `ShortName` - \r
+
+        * `TradingName` - \r
+
+        * `LegalName` - \r\n"
     Organisationname:
       type: object
       properties:
         Name:
-          $ref: '#/components/schemas/Name'
+          $ref: "#/components/schemas/Name"
         NameType:
-          $ref: '#/components/schemas/Organisationnametypevalues'
-      description: ''
+          $ref: "#/components/schemas/Organisationnametypevalues"
+      description: ""
     Organisationlegalstructuretypevalues:
       enum:
         - Corporation
@@ -961,42 +1194,63 @@ components:
         - Financialinstitution
         - National
       type: string
-      description: ">\r\n* `Corporation` - Legal structure is a corporation.\r\n* `Individual` - Legal structure is an individual.\r\n* `Supranational` - Legal structure is a supranational.\r\n* `Sovereign` - Legal structure is a sovereign.\r\n* `Municipal` - Legal structure is a municipal.\r\n* `Province` - Legal structure is a province.\r\n* `State` - Legal structure is a state.\r\n* `County` - Legal structure is a county.\r\n* `Partnership` - Legal structure is a partnership.\r\n* `Financialinstitution` - Legal structure is a financial institution.\r\n* `National` - Legal structure is a state.\r\n"
+      description: ">\r
+
+        * `Corporation` - Legal structure is a corporation.\r
+
+        * `Individual` - Legal structure is an individual.\r
+
+        * `Supranational` - Legal structure is a supranational.\r
+
+        * `Sovereign` - Legal structure is a sovereign.\r
+
+        * `Municipal` - Legal structure is a municipal.\r
+
+        * `Province` - Legal structure is a province.\r
+
+        * `State` - Legal structure is a state.\r
+
+        * `County` - Legal structure is a county.\r
+
+        * `Partnership` - Legal structure is a partnership.\r
+
+        * `Financialinstitution` - Legal structure is a financial institution.\r
+
+        * `National` - Legal structure is a state.\r\n"
     BusinessUnit:
       type: object
       properties:
         BusinessFunction:
           type: string
-          description: ''
+          description: ""
           format: String
         Goal:
           type: string
-          description: ''
+          description: ""
           format: String
         OrganisationStructureHierarchy:
           type: string
           description: Description of the structure of a company. ISO20022
           format: Text
         OrganisationIdentification:
-          $ref: '#/components/schemas/Organisationidentification'
+          $ref: "#/components/schemas/Organisationidentification"
         OrganisationSector:
           type: string
-          description: >-
-            Sector of business of the organisation, for example, pharmaceutical.
-            (ISO20022)
+          description: Sector of business of the organisation, for example,
+            pharmaceutical. (ISO20022)
           format: Text
         LegalEntityIndicator:
           type: string
-          description: ''
+          description: ""
           format: String
         OrganisationDate:
-          $ref: '#/components/schemas/Organisationdatetime'
+          $ref: "#/components/schemas/Organisationdatetime"
         OrganisationType:
-          $ref: '#/components/schemas/Organisationtypevalues'
+          $ref: "#/components/schemas/Organisationtypevalues"
         OrganisationName:
-          $ref: '#/components/schemas/Organisationname'
+          $ref: "#/components/schemas/Organisationname"
         OrganisationLegalStructure:
-          $ref: '#/components/schemas/Organisationlegalstructuretypevalues'
+          $ref: "#/components/schemas/Organisationlegalstructuretypevalues"
       description: The sending entity within the bank (can be used for responses)
     FilterCriteria:
       type: object
@@ -1033,68 +1287,63 @@ components:
       type: object
       properties:
         Filters:
-          $ref: '#/components/schemas/FilterCriteria'
+          $ref: "#/components/schemas/FilterCriteria"
     Outbound:
-      type: array
-      items:
-        type: object
-        properties:
-          CorrespondenceSourceReference:
-            type: string
-            description: >-
-              Internal source reference to the correspondence item passed for
-              delivery (can be used to match responses)
-            format: Object
-          CorrespondenceRecord:
-            $ref: '#/components/schemas/Correspondence'
-          CorrespondenceType:
-            $ref: '#/components/schemas/Correspondencetypevalues'
-          CorrespondenceTemplateReference:
-            type: string
-            description: >-
-              Reference to a template used to assemble standard format
-              correspondence (can be supplied with the correspondence or
-              maintained within the Correspondence service domain as appropriate)
-            format: Object
-          CorrespondenceTemplateRecord:
-            type: string
-            description: The template definition used in correspondence assembly
-            format: Object
-          CorrespondenceContent:
-            type: string
-            description: The message content (aligned to template as appropriate)
-            format: Text
-          CorrespondenceMediaorChannel:
-            $ref: '#/components/schemas/Channel'
-          CorrespondenceAddressee:
-            $ref: '#/components/schemas/Address'
-          CustomerReference:
-            $ref: '#/components/schemas/Involvedparty'
-          ChannelAccessPreferenceReference:
-            $ref: '#/components/schemas/CommunicationChannel'
-          ChannelAccessPreferenceProfile:
-            type: string
-            description: The channel usage profile applied for the correspondence
-            format: Text
-          ChannelAccessChannelorDeviceType:
-            $ref: '#/components/schemas/Devicetypevalues'
-          ChannelAccessChannelorDeviceTypePreference:
-            type: string
-            description: >-
-              A description of the customer's delivery preferences applied to the
-              message (e.g. no paper correspondence, stuffing and batching
-              allowed)
-            format: Text
-          ProductandServiceType:
-            type: string
-            description: The associated product/service if applicable
-            format: Text
-          EmployeeorBusinessUnitReference:
-            $ref: '#/components/schemas/BusinessUnit'
-          DateType:
-            $ref: '#/components/schemas/Datetimetypevalues'
-          Date:
-            $ref: '#/components/schemas/Datetime'
+      type: object
+      properties:
+        CorrespondenceSourceReference:
+          type: string
+          description: Internal source reference to the correspondence item passed for
+            delivery (can be used to match responses)
+          format: Object
+        CorrespondenceRecord:
+          $ref: "#/components/schemas/Correspondence"
+        CorrespondenceType:
+          $ref: "#/components/schemas/Correspondencetypevalues"
+        CorrespondenceTemplateReference:
+          type: string
+          description: Reference to a template used to assemble standard format
+            correspondence (can be supplied with the correspondence or
+            maintained within the Correspondence service domain as appropriate)
+          format: Object
+        CorrespondenceTemplateRecord:
+          type: string
+          description: The template definition used in correspondence assembly
+          format: Object
+        CorrespondenceContent:
+          type: string
+          description: The message content (aligned to template as appropriate)
+          format: Text
+        CorrespondenceMediaorChannel:
+          $ref: "#/components/schemas/Channel"
+        CorrespondenceAddressee:
+          $ref: "#/components/schemas/Address"
+        CustomerReference:
+          $ref: "#/components/schemas/Involvedparty"
+        ChannelAccessPreferenceReference:
+          $ref: "#/components/schemas/CommunicationChannel"
+        ChannelAccessPreferenceProfile:
+          type: string
+          description: The channel usage profile applied for the correspondence
+          format: Text
+        ChannelAccessChannelorDeviceType:
+          $ref: "#/components/schemas/Devicetypevalues"
+        ChannelAccessChannelorDeviceTypePreference:
+          type: string
+          description: A description of the customer's delivery preferences applied to the
+            message (e.g. no paper correspondence, stuffing and batching
+            allowed)
+          format: Text
+        ProductandServiceType:
+          type: string
+          description: The associated product/service if applicable
+          format: Text
+        EmployeeorBusinessUnitReference:
+          $ref: "#/components/schemas/BusinessUnit"
+        DateType:
+          $ref: "#/components/schemas/Datetimetypevalues"
+        Date:
+          $ref: "#/components/schemas/Datetime"
       description: >-
         The collection of operational serivces/functions offered by the
         operational facility
@@ -1112,23 +1361,39 @@ components:
         - TaxReport
         - AnalysisReport
       type: string
-      description: ">\r\n* `FinancialReport` - \r\n* `BusinessReport` - \r\n* `ManagementReport` - \r\n* `Statement` - \r\n* `MaintenanceReport` - \r\n* `RegulatoryReport` - \r\n* `TaxReport` - \r\n* `AnalysisReport` - \r\n"
+      description: ">\r
+
+        * `FinancialReport` - \r
+
+        * `BusinessReport` - \r
+
+        * `ManagementReport` - \r
+
+        * `Statement` - \r
+
+        * `MaintenanceReport` - \r
+
+        * `RegulatoryReport` - \r
+
+        * `TaxReport` - \r
+
+        * `AnalysisReport` - \r\n"
     Report:
       type: object
       properties:
         ReportType:
-          $ref: '#/components/schemas/Reporttypevalues'
+          $ref: "#/components/schemas/Reporttypevalues"
         ReportValidityPeriod:
-          $ref: '#/components/schemas/Datetimeperiod'
+          $ref: "#/components/schemas/Datetimeperiod"
         ReportVersion:
           type: string
-          description: ''
+          description: ""
           format: Number
         ReportDateTime:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
         ReportFormat:
           type: string
-          description: ''
+          description: ""
           format: Text
       description: The session activity report
     DirectoryRecord:
@@ -1137,11 +1402,11 @@ components:
         type: object
         properties:
           CorrespondenceOperatingSession:
-            $ref: '#/components/schemas/CorrespondenceOperatingSession'
+            $ref: "#/components/schemas/CorrespondenceOperatingSession"
           Outbound:
-            $ref: '#/components/schemas/Outbound'
+            $ref: "#/components/schemas/Outbound"
           BlockMailing:
-            $ref: '#/components/schemas/BlockMailing'
+            $ref: "#/components/schemas/BlockMailing"
       description: Custom object used for Generic Search
     CorrespondenceOperatingSession:
       type: object
@@ -1151,93 +1416,92 @@ components:
           description: Service activity statistics that are maintained during the session
           format: Object
         CorrespondenceServiceSessionReportType:
-          $ref: '#/components/schemas/Reporttypevalues'
+          $ref: "#/components/schemas/Reporttypevalues"
         CorrespondenceServiceSessionReport:
-          $ref: '#/components/schemas/Report'
+          $ref: "#/components/schemas/Report"
         CorrespondenceServiceSessionDate:
-          $ref: '#/components/schemas/Datetime'
+          $ref: "#/components/schemas/Datetime"
         CorrespondenceServiceSessionIdentification:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         CorrespondenceServiceSessionStatus:
           type: string
         CorrespondenceServiceSessionStatusReason:
-          $ref: '#/components/schemas/Status'
-      description: >-
-        Operate equipment and/or a largely automated facility within
-        Correspondence. 
+          $ref: "#/components/schemas/Status"
+      description: "Operate equipment and/or a largely automated facility within
+        Correspondence. "
   responses:
     BadRequest:
       description: BadRequest
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     Unauthorized:
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     Forbidden:
       description: Forbidden
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     NotFound:
       description: NotFound
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     TooManyRequests:
       description: TooManyRequests
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     InternalServerError:
       description: InternalServerError
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/HTTPError'
+            $ref: "#/components/schemas/HTTPError"
     DirectoryRecord:
       description: DirectoryRecord
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DirectoryRecord'
+            $ref: "#/components/schemas/DirectoryRecord"
     CorrespondenceOperatingSession:
       description: CorrespondenceOperatingSession
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CorrespondenceOperatingSession'
+            $ref: "#/components/schemas/CorrespondenceOperatingSession"
     Outbound:
       description: Outbound
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Outbound'
+            $ref: "#/components/schemas/Outbound"
     OutboundWithResponse:
       description: OutboundWithResponse
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OutboundWithResponse'
+            $ref: "#/components/schemas/OutboundWithResponse"
     Inbound:
       description: Inbound
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Inbound'
+            $ref: "#/components/schemas/Inbound"
     BlockMailing:
       description: BlockMailing
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/BlockMailing'
+            $ref: "#/components/schemas/BlockMailing"
   parameters:
     pagetoken:
       name: pagetoken
@@ -1296,35 +1560,35 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CorrespondenceOperatingSession'
+            $ref: "#/components/schemas/CorrespondenceOperatingSession"
       required: true
     DirectoryRecord:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Filter'
+            $ref: "#/components/schemas/Filter"
       required: true
     OutboundWithResponse:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OutboundWithResponse'
+            $ref: "#/components/schemas/OutboundWithResponse"
       required: true
     Inbound:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Inbound'
+            $ref: "#/components/schemas/Inbound"
       required: true
     BlockMailing:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/BlockMailing'
+            $ref: "#/components/schemas/BlockMailing"
       required: true
     Outbound:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Outbound'
+            $ref: "#/components/schemas/Outbound"
       required: true

@@ -716,18 +716,150 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /BranchLocationManagement/BatchProcess:
+  '/BranchLocationManagement/{branchlocationmanagementid}/StaffRoster/Initiate':
     post:
       tags:
-        - CR - BranchLocationManagementPlan
-      summary: BpCR Batch process multiple Branch Location Management Plans
-      description: BpCR Batch process multiple Branch Location Management Plans
-      operationId: BatchProcess
+        - BQ - StaffRoster
+      summary: InBQ Initiate staff roster entries for the branch
+      description: InBQ Initiate staff roster entries for the branch
+      operationId: InitiateStaffRoster
+      parameters:
+        - $ref: '#/components/parameters/branchlocationmanagementid'
       requestBody:
-        $ref: '#/components/requestBodies/BranchLocationManagementPlanBatch'
+        $ref: '#/components/requestBodies/StaffRoster'
       responses:
         '200':
-          $ref: '#/components/responses/BranchLocationManagementPlanBatch'
+          $ref: '#/components/responses/StaffRoster'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationManagement/{branchlocationmanagementid}/StaffRoster/{staffrosterid}/Retrieve':
+    get:
+      tags:
+        - BQ - StaffRoster
+      summary: ReBQ Retrieve staff roster entries for the branch
+      description: ReBQ Retrieve staff roster entries for the branch
+      operationId: RetrieveStaffRoster
+      parameters:
+        - $ref: '#/components/parameters/branchlocationmanagementid'
+        - $ref: '#/components/parameters/staffrosterid'
+      responses:
+        '200':
+          $ref: '#/components/responses/StaffRoster'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationManagement/{branchlocationmanagementid}/StaffRoster/{staffrosterid}/Update':
+    put:
+      tags:
+        - BQ - StaffRoster
+      summary: UpBQ Update staff roster entries for the branch
+      description: UpBQ Update staff roster entries for the branch
+      operationId: UpdateStaffRoster
+      parameters:
+        - $ref: '#/components/parameters/branchlocationmanagementid'
+        - $ref: '#/components/parameters/staffrosterid'
+      requestBody:
+        $ref: '#/components/requestBodies/StaffRoster'
+      responses:
+        '200':
+          $ref: '#/components/responses/StaffRoster'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationManagement/{branchlocationmanagementid}/BranchNotification/Initiate':
+    post:
+      tags:
+        - BQ - BranchNotification
+      summary: InBQ Initiate branch notification alerts
+      description: InBQ Initiate branch notification alerts
+      operationId: InitiateBranchNotification
+      parameters:
+        - $ref: '#/components/parameters/branchlocationmanagementid'
+      requestBody:
+        $ref: '#/components/requestBodies/BranchNotification'
+      responses:
+        '200':
+          $ref: '#/components/responses/BranchNotification'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationManagement/{branchlocationmanagementid}/BranchNotification/{branchnotificationid}/Retrieve':
+    get:
+      tags:
+        - BQ - BranchNotification
+      summary: ReBQ Retrieve branch notification alerts
+      description: ReBQ Retrieve branch notification alerts
+      operationId: RetrieveBranchNotification
+      parameters:
+        - $ref: '#/components/parameters/branchlocationmanagementid'
+        - $ref: '#/components/parameters/branchnotificationid'
+      responses:
+        '200':
+          $ref: '#/components/responses/BranchNotification'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  '/BranchLocationManagement/{branchlocationmanagementid}/BranchNotification/{branchnotificationid}/Update':
+    put:
+      tags:
+        - BQ - BranchNotification
+      summary: UpBQ Update branch notification alerts
+      description: UpBQ Update branch notification alerts
+      operationId: UpdateBranchNotification
+      parameters:
+        - $ref: '#/components/parameters/branchlocationmanagementid'
+        - $ref: '#/components/parameters/branchnotificationid'
+      requestBody:
+        $ref: '#/components/requestBodies/BranchNotification'
+      responses:
+        '200':
+          $ref: '#/components/responses/BranchNotification'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1645,6 +1777,54 @@ components:
           description: ''
           format: Text
       description: 'Reference to  Branch Location Management Plan '
+    StaffRoster:
+      type: array
+      items:
+        type: object
+        properties:
+          StaffMemberReference:
+            $ref: '#/components/schemas/Involvedparty'
+          RosterDate:
+            $ref: '#/components/schemas/Datetime'
+          ShiftType:
+            type: string
+            description: The type of shift assigned (e.g. morning, afternoon, night)
+            format: Text
+          RoleAssignment:
+            type: string
+            description: The role assigned to the staff member for the shift
+            format: Text
+          AttendanceStatus:
+            type: string
+            description: Whether the staff member attended or was absent
+            format: Text
+      description: Collection of staff roster entries for branch scheduling
+    BranchNotification:
+      type: array
+      items:
+        type: object
+        properties:
+          NotificationType:
+            type: string
+            description: The type of notification (e.g. alert, reminder, escalation)
+            format: Text
+          NotificationMessage:
+            type: string
+            description: The content of the notification message
+            format: Text
+          NotificationDateTime:
+            $ref: '#/components/schemas/Datetime'
+          NotificationPriority:
+            type: string
+            description: Priority level of the notification (e.g. high, medium, low)
+            format: Text
+          RecipientReference:
+            $ref: '#/components/schemas/Involvedparty'
+          NotificationStatus:
+            type: string
+            description: Current status of the notification (e.g. sent, read, acknowledged)
+            format: Text
+      description: Collection of branch notification alerts
   responses:
     BadRequest:
       description: BadRequest
@@ -1712,14 +1892,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Troubleshooting'
-    BranchLocationManagementPlanBatch:
-      description: BranchLocationManagementPlanBatch
+    StaffRoster:
+      description: StaffRoster
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/BranchLocationManagementPlan'
+            $ref: '#/components/schemas/StaffRoster'
+    BranchNotification:
+      description: BranchNotification
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BranchNotification'
   parameters:
     branchlocationmanagementid:
       name: branchlocationmanagementid
@@ -1756,6 +1940,20 @@ components:
       style: simple
       schema:
         type: string
+    staffrosterid:
+      name: staffrosterid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
+    branchnotificationid:
+      name: branchnotificationid
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: string
   requestBodies:
     BranchLocationManagementPlan:
       content:
@@ -1787,11 +1985,15 @@ components:
           schema:
             $ref: '#/components/schemas/Troubleshooting'
       required: true
-    BranchLocationManagementPlanBatch:
+    StaffRoster:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/BranchLocationManagementPlan'
+            $ref: '#/components/schemas/StaffRoster'
+      required: true
+    BranchNotification:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BranchNotification'
       required: true

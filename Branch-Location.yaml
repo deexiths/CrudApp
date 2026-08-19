@@ -716,6 +716,30 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /BranchLocationManagement/BatchProcess:
+    post:
+      tags:
+        - CR - BranchLocationManagementPlan
+      summary: BpCR Batch process multiple Branch Location Management Plans
+      description: BpCR Batch process multiple Branch Location Management Plans
+      operationId: BatchProcess
+      requestBody:
+        $ref: '#/components/requestBodies/BranchLocationManagementPlanBatch'
+      responses:
+        '200':
+          $ref: '#/components/responses/BranchLocationManagementPlanBatch'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
   schemas:
     HTTPError:
@@ -1688,6 +1712,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Troubleshooting'
+    BranchLocationManagementPlanBatch:
+      description: BranchLocationManagementPlanBatch
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/BranchLocationManagementPlan'
   parameters:
     branchlocationmanagementid:
       name: branchlocationmanagementid
@@ -1754,4 +1786,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Troubleshooting'
+      required: true
+    BranchLocationManagementPlanBatch:
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/BranchLocationManagementPlan'
       required: true

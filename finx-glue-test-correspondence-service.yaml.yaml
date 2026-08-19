@@ -1035,64 +1035,66 @@ components:
         Filters:
           $ref: '#/components/schemas/FilterCriteria'
     Outbound:
-      type: object
-      properties:
-        CorrespondenceSourceReference:
-          type: string
-          description: >-
-            Internal source reference to the correspondence item passed for
-            delivery (can be used to match responses)
-          format: Object
-        CorrespondenceRecord:
-          $ref: '#/components/schemas/Correspondence'
-        CorrespondenceType:
-          $ref: '#/components/schemas/Correspondencetypevalues'
-        CorrespondenceTemplateReference:
-          type: string
-          description: >-
-            Reference to a template used to assemble standard format
-            correspondence (can be supplied with the correspondence or
-            maintained within the Correspondence service domain as appropriate)
-          format: Object
-        CorrespondenceTemplateRecord:
-          type: string
-          description: The template definition used in correspondence assembly
-          format: Object
-        CorrespondenceContent:
-          type: string
-          description: The message content (aligned to template as appropriate)
-          format: Text
-        CorrespondenceMediaorChannel:
-          $ref: '#/components/schemas/Channel'
-        CorrespondenceAddressee:
-          $ref: '#/components/schemas/Address'
-        CustomerReference:
-          $ref: '#/components/schemas/Involvedparty'
-        ChannelAccessPreferenceReference:
-          $ref: '#/components/schemas/CommunicationChannel'
-        ChannelAccessPreferenceProfile:
-          type: string
-          description: The channel usage profile applied for the correspondence
-          format: Text
-        ChannelAccessChannelorDeviceType:
-          $ref: '#/components/schemas/Devicetypevalues'
-        ChannelAccessChannelorDeviceTypePreference:
-          type: string
-          description: >-
-            A description of the customer's delivery preferences applied to the
-            message (e.g. no paper correspondence, stuffing and batching
-            allowed)
-          format: Text
-        ProductandServiceType:
-          type: string
-          description: The associated product/service if applicable
-          format: Text
-        EmployeeorBusinessUnitReference:
-          $ref: '#/components/schemas/BusinessUnit'
-        DateType:
-          $ref: '#/components/schemas/Datetimetypevalues'
-        Date:
-          $ref: '#/components/schemas/Datetime'
+      type: array
+      items:
+        type: object
+        properties:
+          CorrespondenceSourceReference:
+            type: string
+            description: >-
+              Internal source reference to the correspondence item passed for
+              delivery (can be used to match responses)
+            format: Object
+          CorrespondenceRecord:
+            $ref: '#/components/schemas/Correspondence'
+          CorrespondenceType:
+            $ref: '#/components/schemas/Correspondencetypevalues'
+          CorrespondenceTemplateReference:
+            type: string
+            description: >-
+              Reference to a template used to assemble standard format
+              correspondence (can be supplied with the correspondence or
+              maintained within the Correspondence service domain as appropriate)
+            format: Object
+          CorrespondenceTemplateRecord:
+            type: string
+            description: The template definition used in correspondence assembly
+            format: Object
+          CorrespondenceContent:
+            type: string
+            description: The message content (aligned to template as appropriate)
+            format: Text
+          CorrespondenceMediaorChannel:
+            $ref: '#/components/schemas/Channel'
+          CorrespondenceAddressee:
+            $ref: '#/components/schemas/Address'
+          CustomerReference:
+            $ref: '#/components/schemas/Involvedparty'
+          ChannelAccessPreferenceReference:
+            $ref: '#/components/schemas/CommunicationChannel'
+          ChannelAccessPreferenceProfile:
+            type: string
+            description: The channel usage profile applied for the correspondence
+            format: Text
+          ChannelAccessChannelorDeviceType:
+            $ref: '#/components/schemas/Devicetypevalues'
+          ChannelAccessChannelorDeviceTypePreference:
+            type: string
+            description: >-
+              A description of the customer's delivery preferences applied to the
+              message (e.g. no paper correspondence, stuffing and batching
+              allowed)
+            format: Text
+          ProductandServiceType:
+            type: string
+            description: The associated product/service if applicable
+            format: Text
+          EmployeeorBusinessUnitReference:
+            $ref: '#/components/schemas/BusinessUnit'
+          DateType:
+            $ref: '#/components/schemas/Datetimetypevalues'
+          Date:
+            $ref: '#/components/schemas/Datetime'
       description: >-
         The collection of operational serivces/functions offered by the
         operational facility

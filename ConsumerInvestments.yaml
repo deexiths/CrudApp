@@ -1113,7 +1113,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ConsumerSecuritiesOrderTransaction'
+            $ref: '#/components/schemas/Confirmation'
     Confirmation:
       description: Confirmation
       content:
@@ -1173,7 +1173,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ConsumerSecuritiesOrderTransaction'
+            $ref: '#/components/schemas/OrderInitiation'
       required: true
     OrderInitiation:
       content:

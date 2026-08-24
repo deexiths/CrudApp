@@ -1030,7 +1030,9 @@ components:
           $ref: '#/components/schemas/Amounttypevalues'
       description: The volume of shares to be bought or sold
     ConsumerSecuritiesOrderTransaction:
-      type: object
+      type: array
+      items:
+        type: object
       properties:
         ConsumerSecuritiesOrderInstructionType:
           $ref: '#/components/schemas/Instructiontypevalues'
